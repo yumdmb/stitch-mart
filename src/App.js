@@ -1,33 +1,20 @@
-import './App.css';
-import JobList from './components/JobList/JobList';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Alert, Breadcrumb, Card } from 'react-bootstrap';
 import Header from './components/Header/Header';
+import HomeContent from "./components/HomeContent/HomeContent";
+import Footer from './components/Footer/Footer';
+import FeaturesCard from './components/FeaturesCard/FeaturesCard';
+import SaleItem from './components/SaleItem/SaleItem';
 
 
 
 function App() {
   return (
-    <div className='Job-list'>
+    <div>
       <Header />
-      <Breadcrumb>
-        <Breadcrumb.Item href='/'>Home</Breadcrumb.Item>
-        <Breadcrumb.Item href='/jobs'>Products</Breadcrumb.Item>
-        <Breadcrumb.Item active>Contact Us</Breadcrumb.Item>
-      </Breadcrumb>      
-      <h2>Jobs</h2>
-      <JobList />
-      <Alert variant='primary'>You have successfully applied for the job</Alert>
-      <Card>
-        <Card.Header>Job Description</Card.Header>
-        <Card.Body>
-          <Card.Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            quod.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <button className='btn btn-primary'>Apply</button>
+      <HomeContent />
+      <FeaturesCard />
+      <SaleItem />
+      <Footer />
     </div>
   );
 }
