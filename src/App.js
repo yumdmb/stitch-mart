@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import JobList from './components/JobList/JobList';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +8,7 @@ import Header from './components/Header/Header';
 
 function App() {
   return (
-    <div className='Job-list'>
+    <div classNameName='Job-list'>
       <Header />
       <Breadcrumb>
         <Breadcrumb.Item href='/'>Home</Breadcrumb.Item>
@@ -28,7 +27,7 @@ function App() {
           </Card.Text>
         </Card.Body>
       </Card>
-      <button className='btn btn-primary'>Apply</button>
+      <button classNameName='btn btn-primary'>Apply</button>
     </div>
   );
 }
