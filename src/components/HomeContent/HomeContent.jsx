@@ -9,10 +9,10 @@ const HomeContent = () => {
             alignItems: "center", // This will vertically align the container center
             justifyContent: "center" // This will horizontally align the container center
         }}>
-            <div className="container col-xxl-8 px-4 py-5">
+            <div className="container col-xxl-10 px-4 py-2">
                 <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
                     <div className="col-10 col-sm-8 col-lg-6">
-                        <img src="embroidery.webp" className="d-block mx-lg-auto img-fluid rounded-5" alt="Bootstrap Themes" width="700" height="700" loading="lazy"/>
+                        <img src="embroidery.webp" className="d-block mx-lg-auto img-fluid rounded-5" alt="Bootstrap Themes" width="600" height="100" loading="lazy"/>
                     </div>
                     <div className="col-lg-6">
                         <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">Experience the art of embroidery like never before—crafted just for you.</h1>
