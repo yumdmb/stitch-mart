@@ -69,7 +69,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="px-3 py-4 border-bottom mb-3">
+          <div className="px-3 py-4">
             <div className="container d-flex flex-wrap justify-content-center">
               <form className="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
                 <input type="search" className="form-control" placeholder="Search..." aria-label="Search"/>
