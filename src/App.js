@@ -3,12 +3,14 @@ import './App.css';
 import JobList from './components/JobList/JobList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Alert, Breadcrumb, Card } from 'react-bootstrap';
+import Header from './components/Header/Header';
 
 
 
 function App() {
   return (
     <div className='Job-list'>
+      <Header />
       <Breadcrumb>
         <Breadcrumb.Item href='/'>Home</Breadcrumb.Item>
         <Breadcrumb.Item href='/jobs'>Products</Breadcrumb.Item>
