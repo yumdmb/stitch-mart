@@ -8,7 +8,7 @@ import Header from './components/Header/Header';
 
 function App() {
   return (
-    <div classNameName='Job-list'>
+    <div className='Job-list'>
       <Header />
       <Breadcrumb>
         <Breadcrumb.Item href='/'>Home</Breadcrumb.Item>
@@ -27,7 +27,7 @@ function App() {
           </Card.Text>
         </Card.Body>
       </Card>
-      <button classNameName='btn btn-primary'>Apply</button>
+      <button className='btn btn-primary'>Apply</button>
     </div>
   );
 }
