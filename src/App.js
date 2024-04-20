@@ -5,8 +5,6 @@ import Footer from './components/Footer/Footer';
 import FeaturesCard from './components/FeaturesCard/FeaturesCard';
 import SaleItem from './components/SaleItem/SaleItem';
 
-
-
 function App() {
   return (
     <div>
