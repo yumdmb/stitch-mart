@@ -1,6 +1,14 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+import './Header.css';
 
-const Header = () => {
+function Header() {
+  let navigate = useNavigate();  // Create a navigate function
+
+  const handleLoginClick = () => {
+    navigate('/login');  // Use navigate to change the route
+};
+
   return (
     <div style={{ backgroundColor: "#0B1E33" }}>
       <header>
@@ -141,7 +149,7 @@ const Header = () => {
               </form>
 
               <div className="text-end ms-lg-4">
-                <button type="button" className="btn btn-light text-dark me-2">
+                <button type="button" className="btn btn-light text-dark me-2" onClick={handleLoginClick}>
                   Login
                 </button>
                 <button type="button" className="btn btn-warning text-light">

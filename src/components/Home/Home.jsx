@@ -4,7 +4,6 @@ import HomeContent from "../HomeContent/HomeContent";
 import Footer from '../Footer/Footer';
 import FeaturesCard from '../FeaturesCard/FeaturesCard';
 import SaleItem from '../SaleItem/SaleItem';
-import Login from '../Login/Login';
 
 function Home() {
   return (
@@ -14,7 +13,6 @@ function Home() {
       <FeaturesCard />
       <SaleItem />
       <Footer />
-      <Login />
     </div>
   );
 }
