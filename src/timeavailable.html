@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embroidery Service Appointment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea,
+        input[type="number"],
+        input[type="date"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .calendar-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #calendar {
+            width: 100%;
+        }
+
+        .time-slot {
+            margin-right: 10px;
+        }
+
+        #time-slots {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        /* Custom CSS Styles */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Book Your Embroidery Appointment</h2>
+        <form id="appointment-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <div class="calendar-container">
+                <label for="calendar">Choose Appointment Date:</label>
+                <input type="text" id="calendar" required>
+            </div>
+
+            <h3>Choose an Appointment Time</h3>
+            <div id="time-slots"></div>
+
+            <button type="submit">Book Appointment</button>
+            <p id="error-message" class="error-message"></p>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+
+        // Initialize flatpickr
+        flatpickr("#calendar", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            onChange: function(selectedDates, dateStr) {
+                populateTimeSlots();
+            }
+        });
+
+        
+        function populateTimeSlots() {
+            const availableTimeSlots = getAvailableTimeSlots();
+            const timeSlotsContainer = document.getElementById("time-slots");
+            timeSlotsContainer.innerHTML = "";
+
+            availableTimeSlots.forEach(slot => {
+                const radioButton = document.createElement("input");
+                radioButton.type = "radio";
+                radioButton.name = "appointment-time";
+                radioButton.value = slot;
+                radioButton.className = "time-slot";
+
+                const label = document.createElement("label");
+                label.textContent = slot;
+                label.classList.add("time-slot");
+
+                timeSlotsContainer.appendChild(radioButton);
+                timeSlotsContainer.appendChild(label);
+            });
+        }
+
+       
+        function getAvailableTimeSlots() {
+            return [
+                "9:00 AM",
+                "10:00 AM",
+                "11:00 AM",
+                "12:00 PM",
+                "1:00 PM",
+                "2:00 PM",
+                "3:00 PM",
+                "4:00 PM"
+            ];
+        }
+
+        
+        document.getElementById("appointment-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            const selectedTimeSlot = document.querySelector('input[name="appointment-time"]:checked'); // Get selected time slot
+
+            if (selectedTimeSlot) {
+                const formData = new FormData(this); // Get form data
+                const appointmentDate = document.getElementById("calendar").value;
+                const appointmentTime = selectedTimeSlot.value;
+                const appointmentDetails = {
+                    name: formData.get("name"),
+                    email: formData.get("email"),
+                    phone: formData.get("phone"),
+                    date: appointmentDate,
+                    time: appointmentTime
+                };
+
+                
+                console.log("Appointment Details:", appointmentDetails);
+                alert("Your appointment has been booked successfully!");
+            } else {
+                // Show error message if no time slot is selected
+                const errorMessage = document.getElementById("error-message");
+                errorMessage.textContent = "Please select an appointment time slot.";
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
