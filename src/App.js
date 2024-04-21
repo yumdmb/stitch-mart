@@ -7,7 +7,10 @@ import FeaturesCard from './components/FeaturesCard/FeaturesCard';
 import SaleItem from './components/SaleItem/SaleItem';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
 import ContactUs from './components/ContactUs/ContactUs';
+import Profile from './components/Profile/Profile';
+import HomeAfterLogin from './components/HomeAfterLogin/HomeAfterLogin';
 
 function App() {
   return (
@@ -19,7 +22,10 @@ function App() {
       <Route path="/saleItem" element={<SaleItem />} />
       <Route path="/footer" element={<Footer />}/>
       <Route path="/login" element={<Login />} />
+      <Route path="/signUp" element={<SignUp />} />
       <Route path="/contact" element={<ContactUs />} />
+      <Route path='/profile' element={<Profile />} />
+      <Route path='/homeAfterLogin' element={<HomeAfterLogin />} />
     </Routes>
   );
 }

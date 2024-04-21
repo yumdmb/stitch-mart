@@ -9,6 +9,10 @@ function Header() {
     navigate('/login');  // Use navigate to change the route
 };
 
+const handleSignUpClick = () => {
+  navigate('/signUp');  // Use navigate to change the route
+};
+
   return (
     <div style={{ backgroundColor: "#0B1E33" }} className="sticky-header">
       <header>
@@ -31,7 +35,7 @@ function Header() {
                 <li>
                   <a
                     href=""
-                    className="nav-link text-secondary d-flex flex-column align-items-center"
+                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
                   >
                     <div>
                       <svg
@@ -130,7 +134,7 @@ function Header() {
                     <div>Finance</div>
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href=""
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
@@ -153,7 +157,7 @@ function Header() {
                     </div>
                     <div>Profile</div>
                   </a>
-                </li>
+                </li> */}
               </ul>
 
               <form
@@ -172,7 +176,7 @@ function Header() {
                 <button type="button" className="btn btn-light text-dark me-2" onClick={handleLoginClick}>
                   Login
                 </button>
-                <button type="button" className="btn btn-warning text-light">
+                <button type="button" className="btn btn-warning text-light" onClick={handleSignUpClick}>
                   Sign-up
                 </button>
               </div>

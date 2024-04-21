@@ -1,8 +1,8 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
 .body {
     font-family: 'Poppins', sans-serif;
@@ -22,7 +22,7 @@
     width: 420px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     color: #f0f0f0;
     border-radius: 10px;

@@ -8,7 +8,5 @@
 }
 
 .container {
-    padding: 0;
-    margin: 0; /* Ensures that the container touches the edges of its parent */
     max-width: 100%;
-  }
+}

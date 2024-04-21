@@ -1,9 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = () => {
+function Login () {
+
+    let navigate = useNavigate();  // Create a navigate function
+
+    const handleRegsiterClick = () => {
+        navigate('/signUp');  // Use navigate to change the route
+    };
+
+    const handleLoginClick = () => {
+        navigate('/homeAfterLogin');  // Use navigate to change the route
+    };
+
     return(
-        <body className='body'>
+        <div className='body'>
         <div className="wrapper">
             <form action="">
                 <h1>Login</h1>
@@ -20,14 +32,14 @@ const Login = () => {
                     <a href="">Forgot password?</a>
                 </div>
 
-                <button type='submit'>Login</button>
+                <button type='submit' onClick={handleLoginClick}>Login</button>
 
                 <div className='register-link'>
-                    <p>Dont have an account? <a href="">Register</a></p>
+                    <p>Dont have an account? <a href="" onClick={handleRegsiterClick}>Register</a></p>
                 </div>
             </form>
         </div>
-        </body>
+        </div>
     )
     
 };
