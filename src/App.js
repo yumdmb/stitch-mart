@@ -7,6 +7,7 @@ import FeaturesCard from './components/FeaturesCard/FeaturesCard';
 import SaleItem from './components/SaleItem/SaleItem';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import ContactUs from './components/ContactUs/ContactUs';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/saleItem" element={<SaleItem />} />
       <Route path="/footer" element={<Footer />}/>
       <Route path="/login" element={<Login />} />
+      <Route path="/contactUs" element={<ContactUs />} />
     </Routes>
   );
 }
