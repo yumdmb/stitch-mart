@@ -11,6 +11,7 @@ import SignUp from './components/SignUp/SignUp';
 import ContactUs from './components/ContactUs/ContactUs';
 import Profile from './components/Profile/Profile';
 import HomeAfterLogin from './components/HomeAfterLogin/HomeAfterLogin';
+import FinancialApp from './components/Financial/FinancialApp';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Route path="/contact" element={<ContactUs />} />
       <Route path='/profile' element={<Profile />} />
       <Route path='/homeAfterLogin' element={<HomeAfterLogin />} />
+      <Route path="/financialApp" element={<FinancialApp/>} />
     </Routes>
   );
 }

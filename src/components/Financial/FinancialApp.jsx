@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import './FinancialApp.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
 // Component for tracking income, expenses, and overall revenue
 function FinancialRecords() {
@@ -10,7 +9,7 @@ function FinancialRecords() {
   const totalRevenue = income - expenses;
 
   return (
-    <div>
+    <div className="financial-records">
       <h2>Financial Records</h2>
       <p>Income: ${income}</p>
       <p>Expenses: ${expenses}</p>
@@ -41,7 +40,7 @@ function OrderManagement() {
   };
 
   return (
-    <div>
+    <div className="order-management">
       <h2>Order Management</h2>
       {/* Add components for adding orders, clients, and recording payments */}
     </div>
@@ -61,7 +60,7 @@ function FinancialReports() {
   };
 
   return (
-    <div>
+    <div className="financial-reports">
       <h2>Financial Reports</h2>
       {/* Add buttons to generate reports */}
     </div>
@@ -69,7 +68,7 @@ function FinancialReports() {
 }
 
 // Main App component
-function App() {
+function FinancialApp() {
   return (
     <div>
       <FinancialRecords />
@@ -79,4 +78,4 @@ function App() {
   );
 }
 
-export default App;
+export default FinancialApp;

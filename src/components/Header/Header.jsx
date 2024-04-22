@@ -13,6 +13,10 @@ const handleSignUpClick = () => {
   navigate('/signUp');  // Use navigate to change the route
 };
 
+const handleFinancialClick = () => {
+  navigate('/financialApp');  // Use navigate to change the route
+};
+
   return (
     <div style={{ backgroundColor: "#0B1E33" }} className="sticky-header">
       <header>
@@ -115,9 +119,9 @@ const handleSignUpClick = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href=""
+                  <button
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                    onClick={handleFinancialClick} // onClick event handler
                   >
                     <div>
                     <svg 
@@ -132,7 +136,7 @@ const handleSignUpClick = () => {
                     </svg>
                     </div>
                     <div>Finance</div>
-                  </a>
+                  </button>
                 </li>
                 {/* <li>
                   <a
