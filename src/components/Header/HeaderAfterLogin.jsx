@@ -13,7 +13,7 @@ function HeaderAfterLogin () {
     };
 
     return (
-        <div style={{ backgroundColor: "#0B1E33" }}>
+        <div style={{ backgroundColor: "#0B1E33" }} className='sticky-header'>
         <header>
           <div className="px-3 py-2 text-bg-blue">
             <div className="container">
