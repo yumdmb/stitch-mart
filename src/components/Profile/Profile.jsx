@@ -1,5 +1,5 @@
 import './Profile.css';
-import HeaderAfterLogin from '../HeaderAfterLogin/HeaderAfterLogin';
+import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 import { useNavigate } from 'react-router-dom';
 
 

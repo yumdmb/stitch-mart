@@ -6,7 +6,7 @@ import FeaturesCard from '../FeaturesCard/FeaturesCard';
 import SaleItem from '../SaleItem/SaleItem';
 import SignUp from '../SignUp/SignUp';
 import Profile from '../Profile/Profile'
-import HeaderAfterLogin from '../HeaderAfterLogin/HeaderAfterLogin';
+import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 
 function HomeAfterLogin() {
   return (
