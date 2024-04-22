@@ -1,0 +1,76 @@
+/* App container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Heading styles */
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Financial Records styles */
+  .financial-records {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .financial-records p {
+    margin: 5px 0;
+  }
+  
+  /* Order Management styles */
+  .order-management {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .order-management form {
+    margin-bottom: 10px;
+  }
+  
+  .order-management label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .order-management input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .order-management button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .order-management button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Financial Reports styles */
+  .financial-reports {
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .financial-reports button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .financial-reports button:hover {
+    background-color: #218838;
+  }
+  
