@@ -4,6 +4,7 @@ import Booking from './Booking';
 import TimeAvailable from './TimeAvailable';
 import ReceiveBooking from './ReceiveBooking';
 import Header from '../Header/HeaderAfterLogin';
+import Footer from '../Footer/Footer';
 
 function BookingApp() {
     return (

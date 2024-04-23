@@ -1,13 +1,22 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const FeaturesCard = () => {  
-    return (
+function FeaturesCard () {  
+    
+  let navigate = useNavigate();  // Create a navigate function
+
+  const goToBookEmbroidery = ()=> {
+    navigate('/bookingApp');
+  }
+
+  return (
       <div className="container px-4 py-4" id="custom-cards" style={{backgroundColor:"#00537A"}}>
         <h2 className="pb-2 border-bottom text-light">discover the embroidery</h2>
 
         <div className="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
           <div className="col">
           <a href="" className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
+            onClick={goToBookEmbroidery}
             style={{backgroundImage: "url('/embroidery-service.jpg')",
             backgroundSize: 'cover',      
             backgroundPosition: 'center',
