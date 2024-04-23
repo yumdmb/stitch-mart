@@ -12,6 +12,11 @@ function HeaderAfterLogin () {
         navigate('/');  // Use navigate to change the route
     };
 
+    const goToHome = () => {
+      navigate('/homeAfterLogin');
+    };
+  
+
     return (
         <div style={{ backgroundColor: "#0B1E33" }} className='sticky-header'>
         <header>
@@ -35,6 +40,7 @@ function HeaderAfterLogin () {
                     <a
                       href=""
                       className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                      onClick={goToHome}
                     >
                       <div>
                         <svg

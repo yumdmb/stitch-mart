@@ -1,4 +1,4 @@
-import './FinancialApp.css';
+import './Financial.css';
 import React, { useState } from 'react';
 import OrderViewer from './OrderViewer';
 import PaymentViewer from './PaymentViewer';
@@ -6,18 +6,25 @@ import PaymentViewer from './PaymentViewer';
 // Component for tracking orders, invoicing clients, and recording payments
 function OrderManagement() {
     const [orders, setOrders] = useState([
-      { id: 1, clientId: 1, productName: "Product A", quantity: 2, totalPrice: 100 },
-      { id: 2, clientId: 2, productName: "Product B", quantity: 1, totalPrice: 50 },
-      { id: 3, clientId: 3, productName: "Product C", quantity: 3, totalPrice: 150 }
+      { id: 1, clientId: 4, productName: "Product A", quantity: 2, totalPrice: 100 },
+      { id: 2, clientId: 5, productName: "Product B", quantity: 1, totalPrice: 50 },
+      { id: 3, clientId: 6, productName: "Product C", quantity: 3, totalPrice: 150 }
     ]);
   
     const [clients, setClients] = useState([
-      { id: 1, name: "Client 1", email: "client1@example.com" },
-      { id: 2, name: "Client 2", email: "client2@example.com" },
-      { id: 3, name: "Client 3", email: "client3@example.com" }
+      { id: 1, name: "Adam", email: "adam123@gmail.com" },
+      { id: 2, name: "Elvis", email: "elvis456@gmail.com" },
+      { id: 3, name: "Haqeem", email: "haqeem789@gmail.com" },
+      { id: 4, name: "Eisraq", email: "eisraq123@gmail.com" },
+      { id: 5, name: "Hakim", email: "hakim456@gmail.com" },
+      { id: 6, name: "Addin", email: "addin789@gmail.com" }
     ]);
-  
-    const [payments, setPayments] = useState([]);
+
+    const [payments, setPayments] = useState([
+      { id: 1, clientId: 1, amount: 50, date: "2024-04-20" , time: "14:40:21"},
+      { id: 2, clientId: 2, amount: 100, date: "2024-04-21", time: "21:24:56" },
+      { id: 3, clientId: 3, amount: 75, date: "2024-04-22", time: "09:27:32" }
+    ]);
   
     // Function to add a new order
     const addOrder = (order) => {

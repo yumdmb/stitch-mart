@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 const FeaturesCard = () => {  
     return (
@@ -31,7 +32,7 @@ const FeaturesCard = () => {
           </div>
 
           <div className="col">
-          <a href="" className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
+          <Link to="/tutorial" className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
             style={{backgroundImage: "url('/start-embroidery.jpg')",
             backgroundSize: 'cover',      
             backgroundPosition: 'center',
@@ -52,7 +53,7 @@ const FeaturesCard = () => {
                   </li>
                 </ul>
               </div>
-            </a>
+            </Link>
           </div>
 
           <div className="col">

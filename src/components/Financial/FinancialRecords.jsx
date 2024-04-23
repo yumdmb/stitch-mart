@@ -1,10 +1,10 @@
-import './FinancialApp.css';
+import './Financial.css';
 import React, { useState } from 'react';
 
 // Component for tracking income, expenses, and overall revenue
 function FinancialRecords() {
-  const [income, setIncome] = useState(524);
-  const [expenses, setExpenses] = useState(100);
+  const [income, setIncome] = useState(4230);
+  const [expenses, setExpenses] = useState(1045);
 
   const totalRevenue = income - expenses;
 
