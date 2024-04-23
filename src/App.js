@@ -15,6 +15,7 @@ import FinancialApp from './components/Financial/FinancialApp';
 import ProductsDisplay from './components/CardItems/ProductsDisplay';
 import EmbroideryServiceBooking from './components/Booking/Booking';
 import TutorialApp from './components/Tutorial/TutorialApp';
+import Notification from './components/Notification/Notification';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <Route path="/products" element={<ProductsDisplay/>} />
       <Route path="/booking" element={<EmbroideryServiceBooking />} />
       <Route path="/tutorial" element={<TutorialApp />} />
+      <Route path="/notification" element={<Notification/>} />
     </Routes>
   );
 }
