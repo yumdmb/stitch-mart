@@ -13,7 +13,7 @@ function HeaderAfterLogin () {
     };
 
     const goToHome = () => {
-      navigate('/homeAfterLogin');
+      navigate('/');
     };
   
 

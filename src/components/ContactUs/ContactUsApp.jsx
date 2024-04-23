@@ -1,13 +1,17 @@
-import ContactUs from "./ContactUs";
 import HeaderAfterLogin from "../Header/HeaderAfterLogin";
-import ContactForm from "./ContactForm";
+import ContactUsForm from "./ContactUsForm";
 import FeedbackForm from "./FeedbackForm";
+
 function ContactUsApp() {
   return (
-    <div style={{backgroundColor:"#ffba42"}}>
+    <div>
       <HeaderAfterLogin />
-      <ContactForm />
-      <FeedbackForm />
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "calc(100vh - 80px)", backgroundColor: "#ffba42" }}>
+        <div style={{ display: "flex" }}>
+          <ContactUsForm />
+          <FeedbackForm />
+        </div>
+      </div>
     </div>
   );
 }
