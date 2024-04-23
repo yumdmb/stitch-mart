@@ -113,9 +113,9 @@ function Header() {
                   </Link>
                 </li>
                 <li>
-                <button
-                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
-                    onClick={handleInventoryClick}
+                  <button
+                      className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                      onClick={handleInventoryClick}
                   >
                     <div>
                       <svg
@@ -131,8 +131,7 @@ function Header() {
                       </svg>
                     </div>
                     <div>Inventory</div>
-                    </button>
-
+                  </button>
                 </li>
                 <li>
                   <button
