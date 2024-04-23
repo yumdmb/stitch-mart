@@ -14,6 +14,7 @@ import HomeAfterLogin from './components/HomeAfterLogin/HomeAfterLogin';
 import FinancialApp from './components/Financial/FinancialApp';
 import ProductsDisplay from './components/CardItems/ProductsDisplay';
 import EmbroideryServiceBooking from './components/Booking/Booking';
+import EmbroideryTutorial from './components/Tutorial/EmbroideryTutorial';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Route path="/financialApp" element={<FinancialApp/>} />
       <Route path="/products" element={<ProductsDisplay/>} />
       <Route path="/booking" element={<EmbroideryServiceBooking />} />
+      <Route path="/EmbroideryTutorial" element={<EmbroideryTutorial />} />
     </Routes>
   );
 }
