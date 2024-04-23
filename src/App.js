@@ -17,6 +17,7 @@ import EmbroideryServiceBooking from './components/Booking/Booking';
 import BookingApp from './components/Booking/BookingApp';
 import TutorialApp from './components/Tutorial/TutorialApp';
 import Notification from './components/Notification/Notification'
+import Inventory from './components/Inventory/Inventory';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
       <Route path="/bookingApp" element={<BookingApp />} />
       <Route path="/tutorial" element={<TutorialApp />} />
       <Route path='/notification' element={<Notification />} />
+      <Route path='/inventory' element={<Inventory />} />
 
     </Routes>
   );

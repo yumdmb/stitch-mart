@@ -22,6 +22,10 @@ function Header() {
     navigate('/notification');  // Use navigate to change the route
   };  
 
+  const handleInventoryClick = () => {
+    navigate('/inventory');  // Use navigate to change the route
+  }; 
+
   const goToHome = () => {
     navigate('/');
   };
@@ -109,9 +113,9 @@ function Header() {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href=""
+                <button
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                    onClick={handleInventoryClick}
                   >
                     <div>
                       <svg
@@ -127,7 +131,8 @@ function Header() {
                       </svg>
                     </div>
                     <div>Inventory</div>
-                  </a>
+                    </button>
+
                 </li>
                 <li>
                   <button
@@ -149,6 +154,7 @@ function Header() {
                     <div>Notification</div>
                   </button>
                 </li>
+                
                 <li>
                   <button
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"

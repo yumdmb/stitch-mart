@@ -1,0 +1,155 @@
+.inv-container{
+    background-color: #f5a201;
+    height: 1600px;
+}
+
+.inv-header{
+    color: #ddd;
+    background-color: #0B1E33;
+    display: flex;
+    width:100%;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 30px;
+}
+
+.home-button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 1190px; /* Adjust margin-right as needed */
+}
+
+/* INVENTORY LIST*/
+.inv-list {
+    text-align: left;
+    border-radius: 10px;
+    background-color: #ffd35b;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+.inv-list-header {
+    text-align: center;
+    color: #fff;
+    background-color: #013c58;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 30%;
+    margin: 0px auto 15px;
+}
+
+.inv-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.inv-table th, .inv-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.inv-table th {
+    background-color: #f2f2f2;
+}
+
+.inv-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.inv-table table td {
+    background-color: #fff;
+}
+
+/* INVENTORY MANAGEMENT*/
+.edit-inventory-header {
+    text-align: center;
+    color: #fff;
+    background-color: #013c58;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 30%;
+    margin: 50px auto 15px;
+}
+
+button[type="confirm"] {
+    background-color: #007bff; 
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 27px 0px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+button[type="confirm"]:hover {
+    background-color: #0056b3;
+}
+
+
+/* SUPPLIER*/
+.supplier-list {
+    text-align: left;
+    border-radius: 10px;
+    background-color: #ffd35b;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+.supplier-list-header {
+    text-align: center;
+    color: #fff;
+    background-color: #013c58;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 30%;
+    margin: 0px auto 15px;
+}
+
+.add-supplier-header {
+    text-align: center;
+    color: #fff;
+    background-color: #013c58;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 30%;
+    margin: 50px auto 15px;
+}
+
+button[type="addsupplier"] {
+    background-color: #007bff; 
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 27px 0px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+button[type="addsupplier"]:hover {
+    background-color: #0056b3;
+}
