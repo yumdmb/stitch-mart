@@ -1,0 +1,195 @@
+/*Appointment Content*/
+.time-available {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ffd35b;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+.time-available p {
+    text-align: left;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 50%;
+  }
+
+  /*Booking Content */
+  /* .booking {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ffd35b;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+.booking p {
+    text-align: left;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 50%;
+  } */
+  .booking {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ffd35b;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+.booking .header-container {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    max-width: 90%;
+    white-space: nowrap; /* Prevent text wrapping */
+    text-overflow: ellipsis; /* Display ellipsis (...) for overflow text */
+}
+
+
+.booking h2 {
+    color: #fff;
+    background-color: #013c58;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 40%;
+    margin: 0 auto 15px;
+}
+
+.booking-content {
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea,
+button[type="submit"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* ReceiveBooking content */
+  .receivebookingheader{
+    color: #fff;
+    background-color: #013c58;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 40%;
+    margin: 0px auto 15px;
+
+  }
+  .receivebooking {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ffd35b;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+.receivebooking p {
+    text-align: left;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 50%;
+  }
+
+
+  .invoice-recap table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-recap th, .invoice-recap td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.invoice-recap th {
+    background-color: #f2f2f2;
+}
+
+.invoice-recap tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.invoice-recap table td {
+    background-color: #fff;
+}
+
+.button {
+    background-color: #007bff; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 function HeaderAfterLogin () {
     
@@ -72,6 +72,26 @@ function HeaderAfterLogin () {
                       <div>Products</div>
                     </a>
                   </li>
+                  <li>
+                  <Link
+                    to="/bookingApp"
+                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="#FFBA42"
+                        class="bi bi-bag-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+                      </svg>
+                    </div>
+                    <div>Booking</div>
+                  </Link>
+                </li>
                   <li>
                     <a
                       href=""

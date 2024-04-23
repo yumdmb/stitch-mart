@@ -80,7 +80,7 @@ function Header() {
                 </li>
                 <li>
                   <Link
-                    to="/booking"
+                    to="/bookingApp"
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
                   >
                     <div>
