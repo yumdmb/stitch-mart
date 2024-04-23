@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/material_green.css";
+import './BookingApp.css';
 
 function TimeAvailable() {
     const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+    const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
 
     const handleDateChange = (date) => {
         setSelectedDate(date[0]);
-        setSelectedTimeSlot(null);
+        setSelectedTimeSlot(""); // Reset selected time slot when date changes
     };
 
     const handleTimeSlotChange = (event) => {
@@ -47,51 +48,57 @@ function TimeAvailable() {
     ];
 
     return (
-        <div className="container">
-            <h2>Book Your Embroidery Appointment</h2>
-            <form id="appointment-form" onSubmit={handleFormSubmit}>
-                <label htmlFor="name">Your Name:</label>
-                <input type="text" id="name" name="name" required />
-
-                <label htmlFor="email">Email Address:</label>
-                <input type="email" id="email" name="email" required />
-
-                <label htmlFor="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required />
-
-                <div className="calendar-container">
-                    <label htmlFor="calendar">Choose Appointment Date:</label>
-                    <Flatpickr
-                        id="calendar"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        options={{
-                            dateFormat: "Y-m-d",
-                            minDate: "today"
-                        }}
-                        required
-                    />
-                </div>
-
-                <h3>Choose an Appointment Time</h3>
-                <div id="time-slots">
-                    {availableTimeSlots.map((slot, index) => (
-                        <label key={index} className="time-slot">
-                            <input
-                                type="radio"
-                                name="appointment-time"
-                                value={slot}
-                                checked={selectedTimeSlot === slot}
-                                onChange={handleTimeSlotChange}
-                            />
-                            {slot}
-                        </label>
-                    ))}
-                </div>
-
-                <button type="submit">Book Appointment</button>
-                {selectedTimeSlot === null && <p className="error-message">Please select an appointment time slot.</p>}
-            </form>
+        <div className="time-available">
+            <div className="header-container">
+                <h2>Embroidery Appointment</h2>
+            </div>
+            <div className="time-available-content">
+                <form id="appointment-form" onSubmit={handleFormSubmit}>
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="name">Your Name:</label>
+                            <input type="text" id="name" name="name" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required />
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="calendar">Choose Appointment Date:</label>
+                            <div className="calendar-container">
+                                <Flatpickr
+                                    id="calendar"
+                                    value={selectedDate}
+                                    onChange={handleDateChange}
+                                    options={{
+                                        dateFormat: "Y-m-d",
+                                        minDate: "today"
+                                    }}
+                                    required
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="time-slot">Choose an Appointment Time:</label>
+                            <select id="time-slot" name="time-slot" value={selectedTimeSlot} onChange={handleTimeSlotChange} required>
+                                <option value="">Select a time slot</option>
+                                {availableTimeSlots.map((slot, index) => (
+                                    <option key={index} value={slot}>{slot}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit">Book Appointment</button>
+                </form>
+            </div>
         </div>
     );
 }

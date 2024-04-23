@@ -1,4 +1,5 @@
-import React from 'react';
+import './BookingApp.css';
+import React, { useState } from 'react';
 
 function ReceiveBooking() {
     const handleReceive = () => {
@@ -6,18 +7,19 @@ function ReceiveBooking() {
     };
 
     return (
-        <div className="container">
-            <div className="header">
-                <h2>Dear <span id="user">User</span>,</h2>
-                <p>Thanks for your booking!</p>
+        <div className="receivebooking">
+            <div className="receivebookingheader">
+                <h2>Booking Confirmation</h2> 
             </div>
-            <div className="content">
+            <div className="receivebooking-content">
+                <h6>Dear <span id="user">Adam</span>, Thanks for your booking!</h6>
                 <div className="invoice-details">
                     <h3>Invoice Details:</h3>
                     <p><strong>Invoice No.:</strong> ABC123</p>
                     <p><strong>Invoice Date:</strong> April 25, 2024</p>
                     <p><strong>Total:</strong> $100.00</p>
                 </div>
+
                 <div className="invoice-recap">
                     <h3>Invoice Recap:</h3>
                     <table>
