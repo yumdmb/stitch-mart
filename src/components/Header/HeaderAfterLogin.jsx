@@ -21,8 +21,16 @@ function HeaderAfterLogin () {
     };
 
     const goToHome = () => {
-      navigate('/');
+      navigate('/homeAfterLogin');
     };
+
+    const goToBooking = () => {
+      navigate('/bookingApp');
+    }
+
+    const goToProducts = () => {
+      navigate('/products');
+    }
   
 
     return (
@@ -70,6 +78,7 @@ function HeaderAfterLogin () {
                     <a
                       href=""
                       className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                      onClick={goToProducts}
                     >
                       <div>
                         <svg

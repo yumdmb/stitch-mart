@@ -1,11 +1,14 @@
 import React from 'react';
 import './Notification.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 
 function Notification() {
-    return (
 
-        <div className='noti-container'>
+    return (
+        <div>
+            <HeaderAfterLogin />
+            <div className='noti-container'>
             <div className='notification-header'>
                 <h1>Notifications</h1>
                 <ul className="label-nav">
@@ -36,6 +39,7 @@ function Notification() {
                     <p>Notification 3</p>
                 </div>
             </div>
+        </div>
         </div>
       );
 }

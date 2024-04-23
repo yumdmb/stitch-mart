@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import FinancialRecords from './FinancialRecords';
 import OrderManagement from './OrderManagement';
 import FinancialReports from './FinancialReports';
+import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 
 //Main App for Finance Module
 function FinancialApp() {
@@ -17,8 +18,9 @@ function FinancialApp() {
   };
 
   return (
-    
-    <div style={{backgroundColor:"#ffba42"}}>
+    <div>
+      <HeaderAfterLogin />
+      <div style={{backgroundColor:"#ffba42"}}>
       <div className="financial">
         <h1>Finance</h1>
           <button className="home-button" onClick={goToHome}>Home</button>
@@ -28,6 +30,7 @@ function FinancialApp() {
         <FinancialReports />
         <div class="footer">
         <p>Footer</p>
+      </div>
       </div>
     </div>
   );
