@@ -1,22 +1,22 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import './Header.css';
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./Header.css";
 
 function Header() {
-  let navigate = useNavigate();  // Create a navigate function
+  let navigate = useNavigate(); // Create a navigate function
 
   const handleLoginClick = () => {
-    navigate('/login');  // Use navigate to change the route
-};
+    navigate("/login"); // Use navigate to change the route
+  };
 
-const handleSignUpClick = () => {
-  navigate('/signUp');  // Use navigate to change the route
-};
+  const handleSignUpClick = () => {
+    navigate("/signUp"); // Use navigate to change the route
+  };
 
-const handleFinancialClick = () => {
-  navigate('/financialApp');  // Use navigate to change the route
-};
+  const handleFinancialClick = () => {
+    navigate("/financialApp"); // Use navigate to change the route
+  };
 
   return (
     <div style={{ backgroundColor: "#0B1E33" }} className="sticky-header">
@@ -59,7 +59,8 @@ const handleFinancialClick = () => {
                   </a>
                 </li>
                 <li>
-                  <Link to="/products"
+                  <Link
+                    to="/products"
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
                   >
                     <div>
@@ -75,6 +76,26 @@ const handleFinancialClick = () => {
                       </svg>
                     </div>
                     <div>Products</div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/booking"
+                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="#FFBA42"
+                        class="bi bi-bag-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+                      </svg>
+                    </div>
+                    <div>Booking</div>
                   </Link>
                 </li>
                 <li>
@@ -124,16 +145,19 @@ const handleFinancialClick = () => {
                     onClick={handleFinancialClick} // onClick event handler
                   >
                     <div>
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      width="24" 
-                      height="24" 
-                      fill="#FFBA42" 
-                      className="bi bi-graph-up" 
-                      viewBox="0 0 16 16"
-                    >
-                      <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/>
-                    </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="#FFBA42"
+                        className="bi bi-graph-up"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"
+                        />
+                      </svg>
                     </div>
                     <div>Finance</div>
                   </button>
@@ -177,10 +201,18 @@ const handleFinancialClick = () => {
               </form>
 
               <div className="text-end ms-lg-4">
-                <button type="button" className="btn btn-light text-dark me-2" onClick={handleLoginClick}>
+                <button
+                  type="button"
+                  className="btn btn-light text-dark me-2"
+                  onClick={handleLoginClick}
+                >
                   Login
                 </button>
-                <button type="button" className="btn btn-warning text-light" onClick={handleSignUpClick}>
+                <button
+                  type="button"
+                  className="btn btn-warning text-light"
+                  onClick={handleSignUpClick}
+                >
                   Sign-up
                 </button>
               </div>
@@ -190,6 +222,6 @@ const handleFinancialClick = () => {
       </header>
     </div>
   );
-};
+}
 
 export default Header;

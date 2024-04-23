@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile';
 import HomeAfterLogin from './components/HomeAfterLogin/HomeAfterLogin';
 import FinancialApp from './components/Financial/FinancialApp';
 import ProductsDisplay from './components/CardItems/ProductsDisplay';
+import EmbroideryServiceBooking from './components/Booking/Booking';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path='/homeAfterLogin' element={<HomeAfterLogin />} />
       <Route path="/financialApp" element={<FinancialApp/>} />
       <Route path="/products" element={<ProductsDisplay/>} />
+      <Route path="/booking" element={<EmbroideryServiceBooking />} />
     </Routes>
   );
 }
