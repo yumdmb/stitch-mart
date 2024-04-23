@@ -16,6 +16,10 @@ function HeaderAfterLogin () {
       navigate("/financialApp"); // Use navigate to change the route
     };
 
+    const handleNotiClick = () => {
+      navigate("/notification"); // Use navigate to change the route
+    };
+
     const goToHome = () => {
       navigate('/');
     };
@@ -124,9 +128,9 @@ function HeaderAfterLogin () {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href=""
+                    <button
                       className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                      onClick={handleNotiClick}
                     >
                       <div>
                         <svg
@@ -141,7 +145,7 @@ function HeaderAfterLogin () {
                         </svg>
                       </div>
                       <div>Notification</div>
-                    </a>
+                    </button>
                   </li>
                   <li>
                   <button
