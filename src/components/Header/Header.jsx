@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
@@ -58,8 +59,7 @@ const handleFinancialClick = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href=""
+                  <Link to="/products"
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
                   >
                     <div>
@@ -75,7 +75,7 @@ const handleFinancialClick = () => {
                       </svg>
                     </div>
                     <div>Products</div>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a

@@ -12,6 +12,7 @@ import ContactUs from './components/ContactUs/ContactUs';
 import Profile from './components/Profile/Profile';
 import HomeAfterLogin from './components/HomeAfterLogin/HomeAfterLogin';
 import FinancialApp from './components/Financial/FinancialApp';
+import ProductsDisplay from './components/CardItems/ProductsDisplay';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path='/profile' element={<Profile />} />
       <Route path='/homeAfterLogin' element={<HomeAfterLogin />} />
       <Route path="/financialApp" element={<FinancialApp/>} />
+      <Route path="/products" element={<ProductsDisplay/>} />
     </Routes>
   );
 }
