@@ -1,14 +1,29 @@
 /*Header styles*/
 .financial {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
   color: #fff;
   background-color: #0b1e33;
   padding: 12px;
   margin-bottom: 20px;
-  text-indent: 24px;
+  text-indent: 20px;
 }
+
+.home-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 24px; /* Adjust margin-right as needed */
+}
+
 
 /* Financial Records styles */
 .financial-records {
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   border-radius: 10px;
   background-color: #ffd35b;
@@ -19,6 +34,7 @@
 }
 
 .financial-records p {
+  font-family: 'Poppins', sans-serif;
   text-align: left;
   border-radius: 10px;
   background-color: #fff;
@@ -29,6 +45,7 @@
 
 /* Order Management styles */
 .order-management {
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   border-radius: 10px;
   background-color: #ffd35b;
@@ -43,8 +60,12 @@
   background-color: #013c58;
   padding: 5px;
   border-radius: 5px;
-  max-width: 40%;
+  max-width: 30%;
   margin: 0px auto 15px;
+}
+
+.header-container h2{
+  font-weight: 600;
 }
 
 .order-container {
@@ -61,37 +82,15 @@
 .invoice-button {
   color: #fff;
   background-color: #013c58;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
 }
 
-.order-management label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.order-management input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-}
-
-.order-management button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.order-management button:hover {
-  background-color: #0056b3;
-}
-
 /* Financial Reports styles */
 .financial-reports {
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   border-radius: 10px;
   background-color: #ffd35b;
