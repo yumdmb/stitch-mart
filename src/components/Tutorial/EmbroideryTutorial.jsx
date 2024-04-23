@@ -7,7 +7,7 @@ function EmbroideryTutorial() {
       <Container>
         <Row>
           <Col>
-            <h1>Embroidery Tutorial 1</h1>
+            <h1>Tutorial 1</h1>
             <p>This is the first tutorial for embroidery.</p>
             <Card className="mb-3">
               <Card.Body>
@@ -25,7 +25,7 @@ function EmbroideryTutorial() {
             </Card>
           </Col>
           <Col>
-            <h1>Embroidery Tutorial 2</h1>
+            <h1>Tutorial 2</h1>
             <p>This is another great tutorial for embroidery.</p>
             <Card className="mb-3">
               <Card.Body>

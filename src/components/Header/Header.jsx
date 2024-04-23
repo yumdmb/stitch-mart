@@ -18,6 +18,11 @@ function Header() {
     navigate("/financialApp"); // Use navigate to change the route
   };
 
+  const goToHome = () => {
+    navigate('/');
+  };
+  
+
   return (
     <div style={{ backgroundColor: "#0B1E33" }} className="sticky-header">
       <header>
@@ -41,6 +46,7 @@ function Header() {
                   <a
                     href=""
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                    onClick={goToHome}
                   >
                     <div>
                       <svg

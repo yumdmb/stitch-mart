@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
+import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 
 // Sample product data
 const sampleProducts = [
@@ -50,6 +51,7 @@ function ProductsDisplay() {
 
     return (
         <div className="products-container">
+            <HeaderAfterLogin />
             {products.map(product => (
                 <ProductCard key={product.id} product={product} />
             ))}

@@ -32,7 +32,7 @@ const FeaturesCard = () => {
           </div>
 
           <div className="col">
-          <Link to="/EmbroideryTutorial" className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
+          <Link to="/tutorial" className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
             style={{backgroundImage: "url('/start-embroidery.jpg')",
             backgroundSize: 'cover',      
             backgroundPosition: 'center',
