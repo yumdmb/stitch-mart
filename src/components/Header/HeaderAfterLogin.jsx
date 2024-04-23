@@ -12,6 +12,10 @@ function HeaderAfterLogin () {
         navigate('/');  // Use navigate to change the route
     };
 
+    const handleFinancialClick = () => {
+      navigate("/financialApp"); // Use navigate to change the route
+    };
+
     const goToHome = () => {
       navigate('/');
     };
@@ -140,25 +144,28 @@ function HeaderAfterLogin () {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href=""
-                      className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
-                    >
-                      <div>
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        width="24" 
-                        height="24" 
-                        fill="#FFBA42" 
-                        className="bi bi-graph-up" 
+                  <button
+                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                    onClick={handleFinancialClick} // onClick event handler
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="#FFBA42"
+                        className="bi bi-graph-up"
                         viewBox="0 0 16 16"
                       >
-                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/>
+                        <path
+                          fill-rule="evenodd"
+                          d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"
+                        />
                       </svg>
-                      </div>
-                      <div>Finance</div>
-                    </a>
-                  </li>
+                    </div>
+                    <div>Finance</div>
+                  </button>
+                </li>
                   {/* <li>
                     <a
                       href=""
