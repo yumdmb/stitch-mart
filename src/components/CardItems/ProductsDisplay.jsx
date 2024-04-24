@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import HeaderAfterLogin from '../Header/HeaderAfterLogin';
+import './ProductDisplay.css'; // Import CSS file for styling
 
-// Sample product data
 const sampleProducts = [
     {
         id: 1,
@@ -52,9 +52,11 @@ function ProductsDisplay() {
     return (
         <div className="products-container">
             <HeaderAfterLogin />
-            {products.map(product => (
-                <ProductCard key={product.id} product={product} />
-            ))}
+            <div className="product-cards">
+                {products.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </div>
         </div>
     );
 }
