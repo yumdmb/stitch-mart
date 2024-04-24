@@ -1,9 +1,9 @@
 import './BookingApp.css';
-import React, { useState } from 'react';
+import React from 'react'; // Removed { useState }
 
 function ReceiveBooking() {
     const handleReceive = () => {
-        alert("Received!");
+        alert("Booking confirmation sent to your email!");
     };
 
     return (
@@ -16,7 +16,7 @@ function ReceiveBooking() {
                 <div className="invoice-details">
                     <h3>Invoice Details:</h3>
                     <p><strong>Invoice No.:</strong> ABC123</p>
-                    <p><strong>Invoice Date:</strong> April 25, 2024</p>
+                    <p><strong>Invoice Date:</strong> April 24, 2024</p>
                     <p><strong>Total:</strong> $100.00</p>
                 </div>
 
@@ -39,7 +39,7 @@ function ReceiveBooking() {
                         </tbody>
                     </table>
                 </div>
-                <button className="button" onClick={handleReceive}>Receive</button>
+                <button className="button" onClick={handleReceive}>Confirm</button>
             </div>
         </div>
     );
