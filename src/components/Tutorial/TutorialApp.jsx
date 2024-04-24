@@ -1,3 +1,4 @@
+//TutorialApp.jsx
 import EmbroideryTutorial from "./EmbroideryTutorial";
 import { useNavigate } from 'react-router-dom';
 import './Tutorial.css';
@@ -9,15 +10,16 @@ function TutorialApp() {
     const goToHome = () => {
         navigate('/');
         console.log("Navigate to Home");
-      };
+    };
 
-
-  return (
-    <div style={{backgroundColor:"#ffba42"}}>
-        <HeaderAfterLogin />
-        <EmbroideryTutorial />
-    </div>
-  );
+    return (
+        <div style={{ backgroundColor: "#ffba42" }}>
+            <HeaderAfterLogin />
+            <div className="tutorial-content">
+                <EmbroideryTutorial />
+            </div>
+        </div>
+    );
 }
 
 export default TutorialApp;
