@@ -16,9 +16,10 @@ function BookingApp() {
             <Booking/>
             <ReceiveBooking />
             
+            
 
             <div class="footer">
-                <p>Footer</p>
+            <Footer/>  
             </div>
 
          </div>
