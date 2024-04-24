@@ -5,7 +5,7 @@ function Booking() {
     return (
         <div className="booking">
             <div className="header-container">
-                <h2>Embroidery Service Booking</h2>
+                <h2>Embroidery Booking</h2>
             </div>
             <div className="booking-content">
                 <form>
