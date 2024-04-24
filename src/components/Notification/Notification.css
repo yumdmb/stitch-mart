@@ -16,7 +16,7 @@
     width: fit-content;
 }
 
-.notification-header .label-nav{
+.label-nav{
     display: flex;
     margin-left: auto;
     width: fit-content;
@@ -58,20 +58,20 @@
     height: 100vh;
 }
 
-.noti-box .label-in-box{
+.label-in-box{
     display: flex;
     margin: 15px;
 }
 
 
-.noti-box .label-in-box p{
+.label-in-box p{
     font-size: medium;
     margin-left: auto;
     margin-top: auto;
     margin-right: 25px;
 }
 
-.noti-box .messages{
+.messages{
     transition: transform 0.3s ease;
     background-color: #fefefe;
     font-size: small;
@@ -82,7 +82,7 @@
     border-radius: 15px;
 }
 
-.noti-box .messages:hover {
+.messages:hover {
     transform: translateY(-5px);
     transform: translateX(-5px); /* Float the button 5 pixels upwards */
 }
