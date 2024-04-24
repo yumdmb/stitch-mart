@@ -61,3 +61,8 @@
 .tutorial-info p {
   color: #666;
 }
+
+.tutorial-info:focus {
+  outline: none;
+  border: 2px solid #ffba42;
+}

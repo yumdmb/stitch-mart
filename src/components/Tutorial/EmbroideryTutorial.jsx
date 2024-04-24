@@ -1,16 +1,21 @@
-//EmbroideryTutorial.jsx
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { motion } from 'framer-motion'; // Import motion from framer-motion
+import './Tutorial.css';
 
 function EmbroideryTutorial() {
+    const handleFocus = (event) => {
+        event.target.focus();
+    };
+
     return (
         <Container>
             <Row className="tutorial-row">
                 <Col>
-                    <div className="tutorial-info">
+                    <motion.div className="tutorial-info" whileHover={{ scale: 1.05 }} onClick={handleFocus} tabIndex="0">
                         <h1>How to Embroider by Hand</h1>
                         <p>The necessary supplies: fabric (linen or linen-cotton blend recommended), embroidery hoop, embroidery floss, needles, scissors, and a tracing pen or light table.</p>
-                    </div>
+                    </motion.div>
                 </Col>
                 <Col>
                     <Card className="tutorial-card">
@@ -45,18 +50,18 @@ function EmbroideryTutorial() {
                     </Card>
                 </Col>
                 <Col>
-                    <div className="tutorial-info">
-                        <h1>Step by Step : Embroider for Beginners</h1>
+                    <motion.div className="tutorial-info" whileHover={{ scale: 1.05 }} onClick={handleFocus} tabIndex="0">
+                        <h1>Step by Step: Embroider for Beginners</h1>
                         <p>This video teaches you the basics of embroidery, including the necessary supplies, transferring patterns, and different stitches.</p>
-                    </div>
+                    </motion.div>
                 </Col>
             </Row>
             <Row className="tutorial-row">
                 <Col>
-                    <div className="tutorial-info">
+                    <motion.div className="tutorial-info" whileHover={{ scale: 1.05 }} onClick={handleFocus} tabIndex="0">
                         <h1>Start and End Embroidery Stitches</h1>
                         <p>This video is a short tutorial on how to start and end embroidery stitches, specifically focusing on two methods for ending stitches.</p>
-                    </div>
+                    </motion.div>
                 </Col>
                 <Col>
                     <Card className="tutorial-card">
