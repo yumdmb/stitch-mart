@@ -32,9 +32,14 @@ function ReceiveBooking() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Embroidery Service</td>
-                                <td>1</td>
+                                <td>Outline Embroidery </td>
+                                <td>3</td>
                                 <td>$100.00</td>
+                            </tr>
+                            <tr>
+                                <td>Shadow Work Embroidery </td>
+                                <td>1</td>
+                                <td>$90.00</td>
                             </tr>
                         </tbody>
                     </table>
