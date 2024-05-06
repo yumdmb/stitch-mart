@@ -11,7 +11,7 @@ function Profile() {
         navigate('/homeAfterLogin');  // Use navigate to change the route
     };
     return (
-        <div>
+        <div className='background-color'>
             <HeaderAfterLogin />
             <div className='containers my-5'>
             <div className="card">
