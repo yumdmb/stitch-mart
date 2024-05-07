@@ -1,0 +1,68 @@
+
+.tutorial {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background-color: #0b1e33;
+  padding: 12px;
+  margin-bottom: 20px;
+  text-indent: 20px;
+}
+
+.home-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 24px; /* needed margin*/
+}
+
+.header-container {
+  color: #fff;
+  background-color: #013c58;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 30%;
+  margin: 0px auto 15px;
+}
+
+.header-container h2 {
+  font-weight: 600;
+}
+
+/* Tutorial content */
+.tutorial-content {
+  padding: 20px;
+}
+
+.tutorial-row {
+  margin-bottom: 20px;
+}
+
+.tutorial-card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-info h1 {
+  color: #333;
+}
+
+.tutorial-info p {
+  color: #666;
+}
+
+.tutorial-info:focus {
+  outline: none;
+  border: 2px solid #ffba42;
+}

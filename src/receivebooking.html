@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #cccccc;
+        }
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+        .invoice-recap {
+            margin-top: 20px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #FFA500;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Dear <span id="user">User</span>,</h2>
+            <p>Thanks for your booking!</p>
+        </div>
+        <div class="content">
+            <div class="invoice-details">
+                <h3>Invoice Details:</h3>
+                <p><strong>Invoice No.:</strong> ABC123</p>
+                <p><strong>Invoice Date:</strong> April 25, 2024</p>
+                <p><strong>Total:</strong> $100.00</p>
+            </div>
+            <div class="invoice-recap">
+                <h3>Invoice Recap:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Embroidery Service</td>
+                            <td>1</td>
+                            <td>$100.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="button" id="receive-button">Receive</button>
+        </div>
+    </div>
+    <script>
+        
+        
+        document.getElementById("receive-button").addEventListener("click", function() {
+            // Perform action when the button is clicked
+            alert("Received!");
+         });
+    </script>
+</body>
+</html>

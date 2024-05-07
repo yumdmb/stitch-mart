@@ -1,0 +1,126 @@
+  .contact-form-container {
+    background-color: white;
+    padding: 40px; /* Increased padding */
+    border-radius: 12px; /* Smoother border-radius */
+    margin: 20px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 16px; /* Larger font size */
+    color: #555; /* Softer color for labels */
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 12px; /* More padding for inputs */
+    border: 2px solid #ccc; /* Thicker border */
+    border-radius: 6px; /* Smoother border-radius */
+    font-size: 14px; /* Larger input text */
+  }
+  
+  .submit-button {
+    background-color: #0056b3; /* Brighter, more engaging color */
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px; /* Larger font size */
+    border-radius: 6px; /* Smooth border-radius */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .submit-button:hover {
+    background-color: #003580;
+  }
+  
+  .contact-form-title {
+    font-size: 24px; /* Larger and more visible title */
+    color: #333;
+    margin-bottom: 30px; /* Increased spacing */
+  }
+
+/* Feedback Form */
+.feedback-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .feedback-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .feedback-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .feedback-form .form-group label {
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .feedback-form .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 150px;
+  }
+  
+  .feedback-form .form-group .rating-scale {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .feedback-form .form-group .rating-scale input[type="radio"] {
+    display: none;
+  }
+  
+  .feedback-form .form-group .rating-scale label {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .feedback-form .form-group .rating-scale label:hover {
+    background-color: #ddd;
+  }
+  
+  .feedback-form .form-group .rating-scale input[type="radio"]:checked + label {
+    background-color: #ffba42;
+    color: #fff;
+  }
+  
+  .feedback-form .submit-button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }

@@ -1,0 +1,114 @@
+/*Header styles*/
+.financial {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background-color: #0b1e33;
+  padding: 12px;
+  margin-bottom: 20px;
+  text-indent: 20px;
+}
+
+.home-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 24px; /* Adjust margin-right as needed */
+}
+
+
+/* Financial Records styles */
+.financial-records {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #ffd35b;
+  padding: 20px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  max-width: 90%;
+}
+
+.financial-records p {
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 50%;
+}
+
+/* Order Management styles */
+.order-management {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #ffd35b;
+  padding: 20px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  max-width: 90%;
+}
+
+.header-container {
+  color: #fff;
+  background-color: #013c58;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 30%;
+  margin: 0px auto 15px;
+}
+
+.header-container h2{
+  font-weight: 600;
+}
+
+.order-container {
+  text-align: left;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 45%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.invoice-button {
+  color: #fff;
+  background-color: #013c58;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Financial Reports styles */
+.financial-reports {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #ffd35b;
+  padding: 20px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  max-width: 90%;
+}
+
+.financial-reports button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.financial-reports button:hover {
+  background-color: #218838;
+}
+

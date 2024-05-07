@@ -1,0 +1,62 @@
+/* StoreLocation.css */
+.location-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 45%; /* Added width to make it fit side by side */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .location-container h2 {
+    text-align: center;
+    margin-bottom: 20px;.location-container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 12px;
+        margin: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      
+      .location-container h2 {
+        font-size: 24px; /* Larger and bold */
+        color: #333;
+        margin-bottom: 30px; /* More space after the title */
+      }
+      
+      .location-container p {
+        font-size: 16px; /* Larger font for readability */
+        color: #555; /* Softer text color */
+        margin-bottom: 20px; /* Adjust spacing */
+      }
+      
+      .map-container {
+        width: 100%; /* Ensure the map takes full width */
+        height: auto; /* Adjust height to be dynamic */
+        border-radius: 6px; /* Rounded corners for the map iframe */
+      }
+    color: #333;
+  }
+  
+  .location-container p {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .map-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
