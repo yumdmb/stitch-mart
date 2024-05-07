@@ -13,7 +13,7 @@ function Profile() {
     return (
         <div className='background-color'>
             <HeaderAfterLogin />
-            <div className='containers my-5'>
+            <div className='containers py-5'>
             <div className="card">
                 <div className="card-header text-white" style={{ backgroundColor: "#0B1E33" }}>
                     Profile Settings
