@@ -1,17 +1,38 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const UserModel = require('./models/User');
 
 // Import required modules
 const app = express();
+app.use(express.json());
+app.use(cors());
+
+mongoose.connect("mongodb://localhost:27017/User")
 
 // Define routes
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-});
+app.post('/login', (req, res) => {
+    const {userName, password} = req.body;
+    UserModel.findOne({userName: userName})
+    .then(user => {
+        if(user) {
+            if (user.password === password) {
+                res.json("Success")
+            } else {
+                res.json("Incorrect Password")
+            }
+        } else {
+            res.json("User Not Found")
+        }
+    }) 
+})
 
-// Start the server
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+app.post('/register', (req, res) => {
+    UserModel.create(req.body)
+    .then(employees => res.json(employees))
+    .catch(err => res.json(err))
+})
 
-console.log('Hello, World!');
+app.listen(3001, () => {
+    console.log("Server is running on port 3001");
+})
