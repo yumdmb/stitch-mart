@@ -39,7 +39,7 @@ function App() {
       <Route path="/tutorial" element={<TutorialApp />} />
       <Route path='/notification' element={<Notification />} />
       <Route path='/inventory' element={<Inventory />} />
-
+      
     </Routes>
   );
 }
