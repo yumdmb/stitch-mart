@@ -4,9 +4,9 @@ import './Login.css';
 import {useState} from 'react';
 import axios from 'axios';
 
-function Login () {
-    const [userName, setUserName] = useState();
-    const [password, setPassword] = useState();
+const Login = ({ setUser }) => {
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
 
 
     let navigate = useNavigate();  // Create a navigate function
@@ -20,8 +20,12 @@ function Login () {
         axios.post('http://localhost:3001/login',{userName, password})
         .then(result => {console.log(result)
             if(result.data === "Success") {
+                setUser(result.data.user);
                 navigate('/homeAfterLogin')
             } 
+            else {
+                console.log(result.data.status);
+            }
         })
         .catch(err => console.log(err))
     }

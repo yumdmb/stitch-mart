@@ -14,9 +14,9 @@ mongoose.connect("mongodb://localhost:27017/User")
 app.post('/login', (req, res) => {
     const {userName, password} = req.body;
     UserModel.findOne({userName: userName})
-    .then(user => {
-        if(user) {
-            if (user.password === password) {
+    .then(users => {
+        if(users) {
+            if (users.password === password) {
                 res.json("Success")
             } else {
                 res.json("Incorrect Password")
@@ -24,7 +24,8 @@ app.post('/login', (req, res) => {
         } else {
             res.json("User Not Found")
         }
-    }) 
+    })
+    .catch(err => res.json({ status: "Error", error: err }));
 })
 
 app.post('/register', (req, res) => {

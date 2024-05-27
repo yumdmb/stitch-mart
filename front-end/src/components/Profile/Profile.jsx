@@ -1,9 +1,12 @@
 import './Profile.css';
 import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 
-function Profile() {
+const Profile = () => {
+    // const { user } = useContext(UserContext);
+
     
     let navigate = useNavigate();  // Create a navigate function
 
@@ -44,7 +47,8 @@ function Profile() {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    defaultValue="adamarbain"
+                                    // value={user?.userName}
+                                    readOnly 
                                 />
                             </div>
                             <div className="form-group">
@@ -60,7 +64,8 @@ function Profile() {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    defaultValue="adamarbain@mail.com"
+                                    // value={user?.email} 
+                                    readOnly 
                                 />
                                 <div className="alert alert-warning mt-3">
                                     Your email is not confirmed. Please check your inbox.
@@ -73,7 +78,8 @@ function Profile() {
                                 <input
                                     type="password"
                                     className="form-control"
-                                    defaultValue="Company Ltd."
+                                    // value={user?.password} 
+                                    readOnly 
                                 />
                             </div>
                             <div className="d-flex justify-content-end pt-4">

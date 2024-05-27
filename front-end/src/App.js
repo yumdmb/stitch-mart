@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Header from './components/Header/Header';
 import HomeContent from './components/HomeContent/HomeContent';
 import Footer from './components/Footer/Footer';
@@ -18,8 +19,12 @@ import BookingApp from './components/Booking/BookingApp';
 import TutorialApp from './components/Tutorial/TutorialApp';
 import Notification from './components/Notification/Notification'
 import Inventory from './components/Inventory/Inventory';
+import HeaderAfterLogin from './components/Header/HeaderAfterLogin';
+
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />  
@@ -32,7 +37,7 @@ function App() {
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/contact" element={<ContactUsApp />} />
       <Route path='/profile' element={<Profile />} />
-      <Route path='/homeAfterLogin' element={<HomeAfterLogin />} />
+      <Route path='/homeAfterLogin' element={<HomeAfterLogin user={user} />} />
       <Route path="/financialApp" element={<FinancialApp/>} />
       <Route path="/products" element={<ProductsDisplay/>} />
       <Route path="/bookingApp" element={<BookingApp />} />
