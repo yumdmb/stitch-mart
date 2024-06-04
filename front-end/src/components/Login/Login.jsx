@@ -1,46 +1,52 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 import {useState} from 'react';
 import axios from 'axios';
 
 const Login = ({ setUser }) => {
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-
-
-    let navigate = useNavigate();  // Create a navigate function
-
-    const handleRegsiterClick = () => {
-        navigate('/signUp');  // Use navigate to change the route
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post('http://localhost:3001/login',{userName, password})
-        .then(result => {console.log(result)
-            if(result.data === "Success") {
-                setUser(result.data.user);
-                navigate('/homeAfterLogin')
-            } 
-            else {
-                console.log(result.data.status);
-            }
-        })
-        .catch(err => console.log(err))
+    const [formData, setFormData] = useState({});
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.id]: e.target.value });
     }
-
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        setLoading(true);
+        setError(true);
+        const res = await fetch('http://localhost:3001/api/auth/signin',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }); 
+        const data = await res.json();
+        setLoading(false);
+        if (data.success === false) {
+          return;
+        }
+        navigate('/');
+        setError(false);
+      } catch (error) {
+        setLoading(false);
+        setError(true);
+      }
+    }
     return(
         <div className='body'>
         <div className="wrapper">
-            <form action="">
+            <form onSubmit={handleSubmit} action="">
                 <h1>Login</h1>
                 <div className='input-box'>
-                    <input id='input-box' type="text" placeholder='Username' onChange={(e) => setUserName(e.target.value)} required />
+                    <input id='email' type="text" placeholder='Email' onChange={handleChange}  />
                     <i class="bi bi-person-fill"></i>
                 </div>
                 <div className='input-box'>
-                    <input id='input-box' type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} required />
+                    <input id='password' type="password" placeholder='Password' onChange={handleChange}  />
                     <i class="bi bi-lock-fill"></i>
                 </div>
                 <div className='remember-forgot'>
@@ -48,10 +54,15 @@ const Login = ({ setUser }) => {
                     <a href="">Forgot password?</a>
                 </div>
 
-                <button id='wrapper-button' type='submit' onClick={handleSubmit}>Login</button>
+                <button disabled={loading} id='wrapper-button' type='submit' onClick={handleSubmit}>
+                    {loading ? 'Loading...' : 'Sign In'}
+                </button>
 
                 <div className='register-link'>
-                    <p>Dont have an account? <a href="" onClick={handleRegsiterClick}>Register</a></p>
+                    <p>Dont have an account?</p>
+                    <Link to="/signup">
+                    <span>Sign Up</span>
+                    </Link>
                 </div>
             </form>
         </div>
