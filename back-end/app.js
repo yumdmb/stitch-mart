@@ -1,39 +1,36 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const UserModel = require('./models/User');
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
+import cors from 'cors';
+import userRoutes from './routes/user.route.js';
+import authRoutes from './routes/auth.route.js';
 
-// Import required modules
+
+mongoose.connect("mongodb+srv://adam:adam@cluster0.kvg7je5.mongodb.net/stitch-mart?retryWrites=true&w=majority&appName=Cluster0").then(() => {
+    console.log('Connected to MongoDB');
+    }).catch((err) => { 
+    console.log(err);
+    });
+
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/User")
-
-// Define routes
-app.post('/login', (req, res) => {
-    const {userName, password} = req.body;
-    UserModel.findOne({userName: userName})
-    .then(users => {
-        if(users) {
-            if (users.password === password) {
-                res.json("Success")
-            } else {
-                res.json("Incorrect Password")
-            }
-        } else {
-            res.json("User Not Found")
-        }
-    })
-    .catch(err => res.json({ status: "Error", error: err }));
-})
-
-app.post('/register', (req, res) => {
-    UserModel.create(req.body)
-    .then(employees => res.json(employees))
-    .catch(err => res.json(err))
-})
 
 app.listen(3001, () => {
-    console.log("Server is running on port 3001");
-})
+  console.log('Server is running on port 3001');
+});
+
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
+
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
+    return res.status(statusCode).json({ 
+        success: false,
+        message,
+        statusCode 
+    });
+});

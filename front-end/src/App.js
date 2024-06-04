@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Header from './components/Header/Header';
 import HomeContent from './components/HomeContent/HomeContent';
@@ -23,12 +23,12 @@ import HeaderAfterLogin from './components/Header/HeaderAfterLogin';
 
 
 function App() {
-  const [user, setUser] = useState(null);
 
   return (
+    <BrowserRouter>
+    <Header />
     <Routes>
       <Route path="/" element={<Home />} />  
-      <Route path="/header" element={<Header />} /> 
       <Route path="/homeContent" element={<HomeContent />} />
       <Route path="/featuresCard" element={<FeaturesCard />} />
       <Route path="/saleItem" element={<SaleItem />} />
@@ -37,15 +37,15 @@ function App() {
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/contact" element={<ContactUsApp />} />
       <Route path='/profile' element={<Profile />} />
-      <Route path='/homeAfterLogin' element={<HomeAfterLogin user={user} />} />
+      <Route path='/homeAfterLogin' element={<HomeAfterLogin/>} />
       <Route path="/financialApp" element={<FinancialApp/>} />
       <Route path="/products" element={<ProductsDisplay/>} />
       <Route path="/bookingApp" element={<BookingApp />} />
       <Route path="/tutorial" element={<TutorialApp />} />
       <Route path='/notification' element={<Notification />} />
       <Route path='/inventory' element={<Inventory />} />
-      
     </Routes>
+    </BrowserRouter>
   );
 }
 
