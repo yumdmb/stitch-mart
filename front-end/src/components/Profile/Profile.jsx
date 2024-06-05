@@ -1,19 +1,50 @@
 import './Profile.css';
 import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
+import { useRef, useState, useEffect } from 'react'
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
+import { app } from '../../firebase'
 
 
 const Profile = () => {
+    const fileRef = useRef(null)
+    const [image,setImage] = useState(undefined);
+    const [imagePercent,setImagePercent] = useState(0);
+    const [imageError,setImageError] = useState(false);
+    const [formData,setFormData] = useState({});
+    
     const {currentUser} = useSelector(state => state.user)
 
-    
-    let navigate = useNavigate();  // Create a navigate function
-
-    const handleSaveChangeClick = () => {
-        navigate('/homeAfterLogin');  // Use navigate to change the route
+    useEffect(() => {
+        if (image) {
+          handleFileUpload(image);
+        }
+      }, [image]);
+      const handleFileUpload = async (image) => {
+        const storage = getStorage(app);
+        const fileName = new Date().getTime() + '-' + image.name;
+        const storageRef = ref(storage, fileName);
+        const uploadTask = uploadBytesResumable(storageRef, image);
+        uploadTask.on(
+          'state_changed',
+          (snapshot) => {
+            const progress = 
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            setImagePercent(Math.round(progress));
+        },
+        (error)=>{
+          setImageError(true);
+        },
+        ()=>{
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setFormData({...formData,profilePicture:downloadURL})
+          });
+        }
+      );
     };
+    
+
     return (
         <div className='background-color'>
             <div className='containers py-5'>
@@ -22,21 +53,39 @@ const Profile = () => {
                     Profile Settings
                 </div>
                 <div className="tab-content" >
-                    <div className="card-body">
+                    <form className="card-body">
                         <div className="d-flex justify-content-center" style={{height: '100%'}}> 
                             <img
-                                src={currentUser.profilePicture}
+                                src={formData.profilePicture || currentUser.profilePicture}
                                 alt="Avatar"
                                 className="d-block ui-w-40 rounded-circle"
                                 style={{width: '10vw', height: '10vw'}}
                             />
                             <div className="media-body d-flex flex-column align-items-center text-center justify-content-center p-4">
-                                <label className="btn btn-outline-dark">
+                                <label 
+                                className="btn btn-outline-dark"
+                                 onClick={() => fileRef.current.click()}>
                                     Upload new photo
-                                    <input type="file" className="account-settings-fileinput" hidden />
+                                    <input 
+                                    type="file" 
+                                    className="account-settings-fileinput" 
+                                    hidden 
+                                    accept='image/*'
+                                    ref={fileRef}
+                                    onChange={(e) => setImage(e.target.files[0])}
+                                    />
                                 </label>
-                                <button type="button" className="btn btn-light btn-sm md-btn-flat mt-2">Reset</button>
-                                <div className="text-muted small mt-2">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                <p className='text-sm self-center'>
+                                    {imageError ? (
+                                    <span className='text-red-700'>Error uploading image (file size must be less than 2 MB)</span>
+                                    ) : imagePercent > 0 && imagePercent < 100 ? (
+                                    <span className='text-slate-700'>{`Uploading: ${imagePercent} %`}</span>
+                                    ) : imagePercent === 100 ? (
+                                    <span className='text-green-700'>Image uploaded successfully</span>
+                                    ) : (
+                                    ''
+                                    )}
+                                </p>
                             </div>
 
                         </div>
@@ -45,6 +94,7 @@ const Profile = () => {
                             <div className="form-group">
                                 <label className="form-label">Username</label>
                                 <input
+                                    defaultValue={currentUser.username} 
                                     type="text"
                                     className="form-control"
                                     id='username'
@@ -55,6 +105,7 @@ const Profile = () => {
                             <div className="form-group">
                                 <label className="form-label">E-mail</label>
                                 <input
+                                    defaultValue={currentUser.email} 
                                     type="email"
                                     className="form-control"
                                     id='email'
@@ -84,7 +135,7 @@ const Profile = () => {
                                 </div>
 
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
