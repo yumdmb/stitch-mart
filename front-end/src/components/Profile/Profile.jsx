@@ -5,16 +5,24 @@ import { useSelector } from 'react-redux'
 import { useRef, useState, useEffect } from 'react'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
 import { app } from '../../firebase'
+import { useDispatch } from 'react-redux'
+import {
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+} from '../../redux/user/userSlice';
 
 
 const Profile = () => {
+    const dispatch = useDispatch();
     const fileRef = useRef(null)
     const [image,setImage] = useState(undefined);
     const [imagePercent,setImagePercent] = useState(0);
     const [imageError,setImageError] = useState(false);
     const [formData,setFormData] = useState({});
+    const [updateSuccess, setUpdateSuccess] = useState(false);
     
-    const {currentUser} = useSelector(state => state.user)
+    const {currentUser, loading, error } = useSelector(state => state.user)
 
     useEffect(() => {
         if (image) {
@@ -44,6 +52,33 @@ const Profile = () => {
       );
     };
     
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+      };
+      
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          dispatch(updateUserStart());
+          const res = await fetch(`/api/user/update/${currentUser._id}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+          const data = await res.json();
+          if (data.success === false) {
+            dispatch(updateUserFailure(data));
+            return;
+          }
+          dispatch(updateUserSuccess(data));
+          setUpdateSuccess(true);
+        } catch (error) {
+          dispatch(updateUserFailure(error));
+        }
+      };
+
 
     return (
         <div className='background-color'>
@@ -53,7 +88,7 @@ const Profile = () => {
                     Profile Settings
                 </div>
                 <div className="tab-content" >
-                    <form className="card-body">
+                    <form onSubmit={handleSubmit} className="card-body">
                         <div className="d-flex justify-content-center" style={{height: '100%'}}> 
                             <img
                                 src={formData.profilePicture || currentUser.profilePicture}
@@ -99,6 +134,7 @@ const Profile = () => {
                                     className="form-control"
                                     id='username'
                                     placeholder='Username'
+                                    onChange={handleChange}
                                     // value={user?.userName}
                                 />
                             </div>
@@ -110,6 +146,7 @@ const Profile = () => {
                                     className="form-control"
                                     id='email'
                                     placeholder='Email'
+                                    onChange={handleChange}
                                     // value={user?.email} 
                                 />
                                 
@@ -122,23 +159,28 @@ const Profile = () => {
                                     id='password'
                                     placeholder='Password'
                                     // value={user?.password} 
-                                    readOnly 
+                                    onChange={handleChange} 
                                 />
                             </div>
                             {/* <div className="d-flex justify-content-end pt-4">
                                 <button type="button" className="btn text-light" style={{ backgroundColor: "#0B1E33" }} onClick={handleSaveChangeClick}>Save Changes</button>
                             </div>   */}    
-                            <button className='btn text-light mt-3' style={{ backgroundColor: "#0B1E33" }} >Update</button>
+                            <button className='btn text-light mt-3' style={{ backgroundColor: "#0B1E33" }} >
+                                {loading ? 'Loading...' : 'Update'}
+                            </button>
+                            </div>
+                            </form>
                                 <div className='d-flex justify-content-between mt-3'>
                                     <span className='text-danger cursor-pointer'>Delete Account</span>
                                     <span className='text-danger cursor-pointer'>Sign Out</span>
                                 </div>
-
+                                <p className='text-danger mt-3'>{error && 'Something went wrong!'}</p>
+                                <p className='text-success mt-3'>
+                                {updateSuccess && 'User is updated successfully!'}
+                                </p>
                         </div>
-                    </form>
                 </div>
             </div>
-        </div>
         </div>
     );
 }
