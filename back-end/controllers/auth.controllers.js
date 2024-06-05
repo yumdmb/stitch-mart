@@ -39,3 +39,7 @@ export const signin = async (req, res, next) => {
     }
 };
 
+export const signout = (req, res) => {
+    res.clearCookie('access_token').status(200).json('Signout success!');
+  };
+
