@@ -2,21 +2,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 import {useState} from 'react';
-import axios from 'axios';
+import { signInStart, signInFailure, signInSuccess} from '../../redux/user/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Login = ({ setUser }) => {
     const [formData, setFormData] = useState({});
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const {loading, error} = useSelector((state) => state.user);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.id]: e.target.value });
     }
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        setLoading(true);
-        setError(true);
+        dispatch(signInStart());
         const res = await fetch('/api/auth/signin',{
           method: 'POST',
           headers: {
@@ -26,15 +27,14 @@ const Login = ({ setUser }) => {
           credentials: 'include'
         }); 
         const data = await res.json();
-        setLoading(false);
         if (data.success === false) {
+          dispatch(signInFailure(data.message));
           return;
         }
+        dispatch(signInSuccess(data));
         navigate('/homeAfterLogin');
-        setError(false);
       } catch (error) {
-        setLoading(false);
-        setError(true);
+        dispatch(signInFailure(error));
       }
     }
     return(
