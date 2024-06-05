@@ -17,12 +17,13 @@ const Login = ({ setUser }) => {
       try {
         setLoading(true);
         setError(true);
-        const res = await fetch('http://localhost:3001/api/auth/signin',{
+        const res = await fetch('/api/auth/signin',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
+          credentials: 'include'
         }); 
         const data = await res.json();
         setLoading(false);
