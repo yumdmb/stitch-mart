@@ -32,7 +32,7 @@ const Login = ({ setUser }) => {
           return;
         }
         dispatch(signInSuccess(data));
-        navigate('/homeAfterLogin');
+        navigate('/');
       } catch (error) {
         dispatch(signInFailure(error));
       }

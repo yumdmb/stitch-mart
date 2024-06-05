@@ -6,3 +6,24 @@
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.profile-picture {
+  height: 40px;  /* Adjust the size as needed */
+  width: 40px;   /* Adjust the size as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-cover: cover;
+}
+
+.sign-in {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px; /* Adjust font size as needed */
+  color: white;  /* Adjust color as needed */
+}

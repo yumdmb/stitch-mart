@@ -12,7 +12,6 @@ import HomeAfterLogin from '../HomeAfterLogin/HomeAfterLogin';
 function Home() {
   return (
     <div>
-      <Header />
       <HomeContent />
       <FeaturesCard />
       <SaleItem />

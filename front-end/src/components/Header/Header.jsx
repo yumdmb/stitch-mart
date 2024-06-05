@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux'
 import "./Header.css";
 
-function Header() {
+export default function Header() {
   let navigate = useNavigate(); // Create a navigate function
 
   const handleLoginClick = () => {
@@ -30,6 +31,7 @@ function Header() {
     navigate('/');
   };
   
+  const { currentUser } = useSelector ((state) => state.user)
 
   return (
     <div style={{ backgroundColor: "#0B1E33" }} className="sticky-header">
@@ -216,21 +218,18 @@ function Header() {
               </form>
 
               <div className="text-end ms-lg-4">
-                <button
-                  type="button"
-                  className="btn btn-light text-dark me-2"
-                  onClick={handleLoginClick}
-                >
-                  Login
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-warning text-light"
-                  onClick={handleSignUpClick}
-                >
-                  Sign-up
-                </button>
-              </div>
+          <Link to='/profile' className="profile-link">
+            {currentUser ? (
+              <img 
+                src={currentUser.profilePicture} 
+                alt='profile' 
+                className='profile-picture' 
+              />
+            ) : (
+              <span className='sign-in'>Log In</span>
+            )}
+          </Link>
+        </div>
             </div>
           </div>
         </div>
@@ -239,4 +238,3 @@ function Header() {
   );
 }
 
-export default Header;

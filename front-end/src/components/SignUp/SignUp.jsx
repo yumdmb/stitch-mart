@@ -31,7 +31,7 @@ function SignUp() {
           if (data.success === false) {
             return;
           }
-          navigate('/homeAfterLogin');
+          navigate('/');
           setError(false);
         } catch (error) {
           setLoading(false);

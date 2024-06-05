@@ -20,6 +20,7 @@ import TutorialApp from './components/Tutorial/TutorialApp';
 import Notification from './components/Notification/Notification'
 import Inventory from './components/Inventory/Inventory';
 import HeaderAfterLogin from './components/Header/HeaderAfterLogin';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
@@ -36,7 +37,9 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/contact" element={<ContactUsApp />} />
-      <Route path='/profile' element={<Profile />} />
+      <Route element={<PrivateRoute/>}>
+        <Route path="/profile" element={<Profile />} />
+      </Route>
       <Route path='/homeAfterLogin' element={<HomeAfterLogin/>} />
       <Route path="/financialApp" element={<FinancialApp/>} />
       <Route path="/products" element={<ProductsDisplay/>} />
