@@ -2,10 +2,11 @@ import './Profile.css';
 import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux'
 
 
 const Profile = () => {
-    // const { user } = useContext(UserContext);
+    const {currentUser} = useSelector(state => state.user)
 
     
     let navigate = useNavigate();  // Create a navigate function
@@ -15,7 +16,6 @@ const Profile = () => {
     };
     return (
         <div className='background-color'>
-            <HeaderAfterLogin />
             <div className='containers py-5'>
             <div className="card">
                 <div className="card-header text-white" style={{ backgroundColor: "#0B1E33" }}>
@@ -25,7 +25,7 @@ const Profile = () => {
                     <div className="card-body">
                         <div className="d-flex justify-content-center" style={{height: '100%'}}> 
                             <img
-                                src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                src={currentUser.profilePicture}
                                 alt="Avatar"
                                 className="d-block ui-w-40 rounded-circle"
                                 style={{width: '10vw', height: '10vw'}}
@@ -47,44 +47,42 @@ const Profile = () => {
                                 <input
                                     type="text"
                                     className="form-control"
+                                    id='username'
+                                    placeholder='Username'
                                     // value={user?.userName}
-                                    readOnly 
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label className="form-label">Full Name</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    defaultValue="Adam Arbain"
                                 />
                             </div>
                             <div className="form-group">
                                 <label className="form-label">E-mail</label>
                                 <input
-                                    type="text"
+                                    type="email"
                                     className="form-control"
+                                    id='email'
+                                    placeholder='Email'
                                     // value={user?.email} 
-                                    readOnly 
                                 />
-                                <div className="alert alert-warning mt-3">
-                                    Your email is not confirmed. Please check your inbox.
-                                    <br />
-                                    <a href="" className="alert-link">Resend confirmation</a>
-                                </div>
+                                
                             </div>
                             <div className="form-group">
                                 <label className="form-label">Passsword</label>
                                 <input
                                     type="password"
                                     className="form-control"
+                                    id='password'
+                                    placeholder='Password'
                                     // value={user?.password} 
                                     readOnly 
                                 />
                             </div>
-                            <div className="d-flex justify-content-end pt-4">
+                            {/* <div className="d-flex justify-content-end pt-4">
                                 <button type="button" className="btn text-light" style={{ backgroundColor: "#0B1E33" }} onClick={handleSaveChangeClick}>Save Changes</button>
-                            </div>      
+                            </div>   */}    
+                            <button className='btn text-light mt-3' style={{ backgroundColor: "#0B1E33" }} >Update</button>
+                                <div className='d-flex justify-content-between mt-3'>
+                                    <span className='text-danger cursor-pointer'>Delete Account</span>
+                                    <span className='text-danger cursor-pointer'>Sign Out</span>
+                                </div>
+
                         </div>
                     </div>
                 </div>
