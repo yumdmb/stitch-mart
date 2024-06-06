@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Notification.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 
 function Notification() {
+    const [title,setTitle] = useState('All');
+    const [noti,setNoti] = useState(null);
 
     return (
         <div>
@@ -13,7 +15,7 @@ function Notification() {
                 <h1>Notifications</h1>
                 <ul className="label-nav">
                     <li>
-                        <button class="btn btn-warning bi bi-bell-fill">    All</button>
+                        <button  class="btn btn-warning bi bi-bell-fill">    All</button>
                     </li>
                     <li>
                         <button class="btn btn-warning bi bi-journal-x">    Unread</button>
@@ -32,22 +34,9 @@ function Notification() {
 
             <div className='noti-box'>
                 <div className='label-in-box'>
-                    <h2><strong>Unread</strong></h2>
+                    <h2><strong>title</strong></h2>
                     <p>Mark all as read</p>
-                </div>
-                
-                <div className='messages'>
-                    <h6 className='bi bi-cart-dash'>     |<strong>                          Order Updates</strong></h6>
-                    <p>Your order is ready to ship!</p>
-                </div>
-                <div className='messages'>
-                    <h6 className='bi bi-calendar'>     |<strong>                          Appointment Updates</strong></h6>
-                    <p><strong>1 day left</strong> before your appointment with us. Can't wait to meet you!</p>
-                </div>
-                <div className='messages'>
-                    <h6 className='bi bi-backpack'>     |<strong>                          Low Inventory Alert</strong></h6>
-                    <p>Your inventory <strong>item #69420</strong> is running low!</p>
-                </div>
+                </div>    
             </div>
         </div>
         </div>
