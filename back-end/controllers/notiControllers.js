@@ -14,7 +14,7 @@ export const notification = async (req, res, next) => {
 export const fetchNoti = async (req, res, next) => {
     try{
         const notiFetched = await Notification.find({});
-        return res.status(200).json({notis: notiFetched});
+        return res.status(200).json(notiFetched);
     }
     catch (error) {
         next(error);
@@ -24,7 +24,7 @@ export const fetchNoti = async (req, res, next) => {
 export const notiUnread = async (req, res) => {
     try{
         const notiFetched = await Notification.find({isRead: false});
-        return res.status(200).json({notis : notiFetched});
+        return res.status(200).json(notiFetched);
     }
     catch (error) {
         console.log(error);
