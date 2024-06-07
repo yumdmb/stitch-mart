@@ -30,3 +30,33 @@ export const notiUnread = async (req, res) => {
         console.log(error);
     }
 }
+
+export const notiInventory = async (req, res) => {
+    try{
+        const notiFetched = await Notification.find({category: "Low Inventory Alert"});
+        return res.status(200).json(notiFetched);
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+export const notiOrder = async (req, res) => {
+    try{
+        const notiFetched = await Notification.find({category: "Order Update"});
+        return res.status(200).json(notiFetched);
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+export const notiAppointment = async (req, res) => {
+    try{
+        const notiFetched = await Notification.find({category: "Appointment"});
+        return res.status(200).json(notiFetched);
+    }
+    catch (error) {
+        console.log(error);
+    }
+}

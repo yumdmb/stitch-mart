@@ -1,3 +1,4 @@
+import { Int32 } from 'bson';
 import mongoose from 'mongoose';
 
 const notiSchema = new mongoose.Schema({

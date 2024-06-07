@@ -11,7 +11,7 @@ function Notification() {
             setTitle('All');
             const res = await fetch("/api/notification/show");
             const json = await res.json();
-            setNoti(json);
+            setNoti((prev) => json);
             console.log(noti);
     }
 
@@ -21,6 +21,30 @@ function Notification() {
             const json = await res.json();
             setNoti((prev) => json);
             console.log(noti);
+    }
+
+    const handleInventoryClick = async() => {
+        setTitle('Low Inventory Alert');
+        const res = await fetch("/api/notification/inventory");
+        const json = await res.json();
+        setNoti((prev) => json);
+        console.log(noti);
+    }
+
+    const handleOrderClick = async()=> {
+        setTitle('Order Update');
+        const res = await fetch("/api/notification/order");
+        const json = await res.json();
+        setNoti((prev) => json);
+        console.log(noti);
+    }
+
+    const handleAppointmentClick = async()=> {
+        setTitle('Appointment');
+        const res = await fetch("/api/notification/appointment");
+        const json = await res.json();
+        setNoti((prev) => json);
+        console.log(noti);
     }
 
     useEffect(() => {
@@ -47,26 +71,26 @@ function Notification() {
                         <button onClick={handleUnreadClick} class="btn btn-warning bi bi-journal-x">    Unread</button>
                     </li>
                     <li>
-                        <button class="btn btn-warning bi bi-cart-dash-fill">    Order Update</button>
+                        <button onClick={handleOrderClick} class="btn btn-warning bi bi-cart-dash-fill">    Order Update</button>
                     </li>
                     <li>
-                        <button class="btn btn-warning bi bi-backpack-fill">    Inventory Alert</button>
+                        <button onClick={handleInventoryClick} class="btn btn-warning bi bi-backpack-fill">    Inventory Alert</button>
                     </li>
                     <li>
-                        <button class="btn btn-warning bi bi-calendar-week">    Appointment</button>
+                        <button onClick={handleAppointmentClick} class="btn btn-warning bi bi-calendar-week">    Appointment</button>
                     </li>
                 </ul>
             </div>
 
             <div className='noti-box'>
                 <div className='label-in-box'>
-                    <h2><strong>title</strong></h2>
+                    <h2><strong>{title}</strong></h2>
                     <p>Mark all as read</p>
                 </div>    
                 {noti &&
                     noti.map(notif => {
                         return <div key={notif._id} className='messages'>
-                            <h6 className='bi bi-backpack'>     |<strong>                          {title}</strong></h6>
+                            <h6 className='bi bi-backpack'>     |<strong>                          {notif.category}</strong></h6>
                             <p>{notif.content}</p>
                         </div>
                 })}
