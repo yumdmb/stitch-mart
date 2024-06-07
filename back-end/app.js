@@ -6,21 +6,25 @@ import cors from 'cors';
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 import notiRoutes from './routes/notiRoute.js';
+import bookingRoutes from './routes/booking.route.js'; // booking routes
 import cookieParser from 'cookie-parser';
+import nodemailer from 'nodemailer';
 
-
-mongoose.connect("mongodb+srv://adam:adam@cluster0.kvg7je5.mongodb.net/stitch-mart?retryWrites=true&w=majority&appName=Cluster0").then(() => {
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://adam:adam@cluster0.kvg7je5.mongodb.net/stitch-mart?retryWrites=true&w=majority&appName=Cluster0")
+  .then(() => {
     console.log('Connected to MongoDB');
-    }).catch((err) => { 
+  })
+  .catch((err) => {
     console.log(err);
-    });
+  });
 
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000', // Your frontend's URL
-    credentials: true // This allows the frontend to include cookies in requests
-  }));
+  origin: 'http://localhost:3000', // Your frontend's URL
+  credentials: true // This allows the frontend to include cookies in requests
+}));
 app.use(cookieParser());
 
 app.listen(3001, () => {
@@ -30,13 +34,43 @@ app.listen(3001, () => {
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/notification", notiRoutes);
+app.use("/api/bookings", bookingRoutes); // use Booking routes
+
+// Email configuration
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+// Example route to send an email
+app.post('/send-email', async (req, res) => {
+  const { to, subject, text } = req.body;
+  
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to,
+      subject,
+      text,
+    });
+    res.status(200).send('Email sent successfully');
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).send('Error sending email');
+  }
+});
 
 app.use((err, req, res, next) => {
-    const statusCode = err.statusCode || 500;
-    const message = err.message || 'Internal Server Error';
-    return res.status(statusCode).json({ 
-        success: false,
-        message,
-        statusCode 
-    });
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'Internal Server Error';
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    statusCode
+  });
 });
+
+export default app;

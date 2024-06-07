@@ -18,6 +18,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.0",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "nodemailer": "^6.7.5"
   }
 }
