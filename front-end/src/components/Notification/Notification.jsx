@@ -7,6 +7,10 @@ function Notification() {
     const [title,setTitle] = useState('All');
     const [noti,setNoti] = useState(null);
 
+    const handleMessageClick = () => {
+        console.log("meow")
+    }
+
     const handleAllClick = async() => {
             setTitle('All');
             const res = await fetch("/api/notification/show");
@@ -89,8 +93,8 @@ function Notification() {
                 </div>    
                 {noti &&
                     noti.map(notif => {
-                        return <div key={notif._id} className='messages'>
-                            <h6 className='bi bi-backpack'>     |<strong>                          {notif.category}</strong></h6>
+                        return <div onClick={handleMessageClick} key={notif._id} className='messages' style={{backgroundColor : notif.isRead ? '#cbcbcb' : 'white'}}>
+                            <h6><strong>{notif.category}</strong></h6>
                             <p>{notif.content}</p>
                         </div>
                 })}

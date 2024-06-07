@@ -73,7 +73,6 @@
 
 .messages{
     transition: transform 0.3s ease;
-    background-color: #fefefe;
     font-size: small;
     width: auto;
     height: fit-content;
