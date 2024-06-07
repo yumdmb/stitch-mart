@@ -1,19 +1,46 @@
 import Notification from '../models/notiModel.js';
 
 export const notification = async (req, res, next) => {
-    const { email, isRead, category, content } = req.body;
-    const newNoti = new Notification({ email, isRead, category, content });
+    const newNoti = new Notification({ email: 'mnurhakimothman@gmail.com',
+                                         isRead: false, 
+                                         category: 'Order Update',
+                                          content: 'Meow Meow' });
     try {
         await newNoti.save();
-        res.status(201).json({ message: 'Notification back-end page.', count: 5});
+        res.status(201).json({ message: 'New notification updated'});
     } catch (error) {
         next(error);
     }
 };
 
+export const markRead = async (req, res, next) => {
+    try {
+        const {id, email, category, content} = req.params;
+        const noti = await Notification.updateMany(
+                {isRead: false},
+                {$set: {isRead: true}}, 
+            {new: true});
+        res.status(200).json(noti);
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const markReadOne = async (req, res, next) => {
+    try {
+        const {id, email, category, content} = req.params;
+        const noti = await Notification.findByIdAndUpdate(id,
+            {$set: {isRead: true}}, 
+            {new: true});
+        res.status(200).json(noti);
+    } catch (error) {
+        next(error);
+    }
+}
+
 export const fetchNoti = async (req, res, next) => {
     try{
-        const notiFetched = await Notification.find({});
+        const notiFetched = await Notification.find({email: req.params.email});
         return res.status(200).json(notiFetched);
     }
     catch (error) {
@@ -23,7 +50,7 @@ export const fetchNoti = async (req, res, next) => {
 
 export const notiUnread = async (req, res) => {
     try{
-        const notiFetched = await Notification.find({isRead: false});
+        const notiFetched = await Notification.find({email: req.params.email, isRead: false});
         return res.status(200).json(notiFetched);
     }
     catch (error) {
@@ -33,7 +60,7 @@ export const notiUnread = async (req, res) => {
 
 export const notiInventory = async (req, res) => {
     try{
-        const notiFetched = await Notification.find({category: "Low Inventory Alert"});
+        const notiFetched = await Notification.find({email: req.params.email, category: "Low Inventory Alert"});
         return res.status(200).json(notiFetched);
     }
     catch (error) {
@@ -43,7 +70,7 @@ export const notiInventory = async (req, res) => {
 
 export const notiOrder = async (req, res) => {
     try{
-        const notiFetched = await Notification.find({category: "Order Update"});
+        const notiFetched = await Notification.find({email: req.params.email, category: "Order Update"});
         return res.status(200).json(notiFetched);
     }
     catch (error) {
@@ -53,7 +80,7 @@ export const notiOrder = async (req, res) => {
 
 export const notiAppointment = async (req, res) => {
     try{
-        const notiFetched = await Notification.find({category: "Appointment"});
+        const notiFetched = await Notification.find({email: req.params.email, category: "Appointment"});
         return res.status(200).json(notiFetched);
     }
     catch (error) {

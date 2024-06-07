@@ -81,6 +81,15 @@
     border-radius: 15px;
 }
 
+.bottom-in-message {
+    display: flex;
+    margin-bottom: auto;
+}
+
+.bottom-in-message p{
+    margin-left: auto;
+}
+
 .messages:hover {
     transform: translateY(-5px);
     transform: translateX(-5px); /* Float the button 5 pixels upwards */
