@@ -36,26 +36,26 @@ app.use("/api/auth", authRoutes);
 app.use("/api/notification", notiRoutes);
 app.use("/api/bookings", bookingRoutes); // use Booking routes
 
-// Email configuration
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
 // Example route to send an email
 app.post('/send-email', async (req, res) => {
   const { to, subject, text } = req.body;
-  
+
   try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to,
       subject,
       text,
     });
+
     res.status(200).send('Email sent successfully');
   } catch (error) {
     console.error('Error sending email:', error);

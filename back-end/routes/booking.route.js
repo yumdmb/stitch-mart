@@ -1,11 +1,12 @@
-const express = require('express');
+import express from 'express';
+import { bookService, getAvailableSlots } from '../controllers/booking.controller.js';
+
 const router = express.Router();
-const bookingController = require('../controllers/booking.controller');
 
 // Route to handle booking
-router.post('/book', bookingController.bookService);
+router.post('/book', bookService);
 
 // Route to get available slots
-router.get('/slots', bookingController.getAvailableSlots);
+router.get('/slots', getAvailableSlots);
 
-module.exports = router;
+export default router;
