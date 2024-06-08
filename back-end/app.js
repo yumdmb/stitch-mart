@@ -9,6 +9,9 @@ import notiRoutes from './routes/notiRoute.js';
 import bookingRoutes from './routes/booking.route.js'; // booking routes
 import cookieParser from 'cookie-parser';
 import nodemailer from 'nodemailer';
+import orderRoutes from './routes/order.route.js';
+import clientRoutes from './routes/client.route.js';
+import paymentRoutes from './routes/payment.route.js';
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://adam:adam@cluster0.kvg7je5.mongodb.net/stitch-mart?retryWrites=true&w=majority&appName=Cluster0")
@@ -35,6 +38,9 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/notification", notiRoutes);
 app.use("/api/bookings", bookingRoutes); // use Booking routes
+app.use('/api/clients', clientRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Example route to send an email
 app.post('/send-email', async (req, res) => {
@@ -71,6 +77,40 @@ app.use((err, req, res, next) => {
     message,
     statusCode
   });
+});
+
+// Code to send invoice to email
+app.post('/api/invoice', async (req, res) => {
+  // Extract data from request body
+  const { clientId, email, invoiceDetails } = req.body;
+
+  // Generate PDF invoice
+  // Send the PDF invoice as an email attachment
+  try {
+    const transporter = nodemailer.createTransport({
+      // Configure email transport (e.g., SMTP)
+    });
+
+    const mailOptions = {
+      from: 'your-email@example.com',
+      to: email,
+      subject: 'Invoice',
+      text: 'Please find the invoice attached.',
+      attachments: [
+        {
+          filename: 'invoice.pdf',
+          path: 'invoice.pdf',
+          contentType: 'application/pdf'
+        }
+      ]
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error('Error sending invoice:', error);
+    res.status(500).json({ success: false, error: 'Failed to send invoice' });
+  }
 });
 
 export default app;
