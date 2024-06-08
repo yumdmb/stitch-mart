@@ -113,6 +113,7 @@ const Profile = () => {
     }
   };
 
+<<<<<<< HEAD
   return (
     <div className="background-color">
       <div className="containers py-5">
@@ -165,6 +166,23 @@ const Profile = () => {
                       ""
                     )}
                   </p>
+=======
+      const handleSignOut = async () => {
+        try {
+          await fetch('/api/auth/signout');
+          dispatch(signOut())
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+    return (
+        <div className='background-color'>
+            <div className='containers py-5'>
+            <div className="card">
+                <div className="card-header text-white" style={{ backgroundColor: "#0B1E33" }}>
+                    Profile Settings
+>>>>>>> parent of 30b89d6 (editing profile page)
                 </div>
               </div>
               <hr className="border-light m-0" />
@@ -206,30 +224,38 @@ const Profile = () => {
                 </div>
                 {/* <div className="d-flex justify-content-end pt-4">
                                 <button type="button" className="btn text-light" style={{ backgroundColor: "#0B1E33" }} onClick={handleSaveChangeClick}>Save Changes</button>
+<<<<<<< HEAD
                             </div>   */}
                 {/* <div class="d-flex justify-content-center mt-3">
                               <button className='btn btn-block text-light mt-3' style={{ backgroundColor: "#0B1E33", width: "18rem" }} >
                                   {loading ? 'Loading...' : 'Update'}
                               </button>
                             </div>  
+=======
+                            </div>   */}    
+                            <button className='btn text-light mt-3' style={{ backgroundColor: "#0B1E33" }} >
+                                {loading ? 'Loading...' : 'Update'}
+                            </button>
+>>>>>>> parent of 30b89d6 (editing profile page)
                             </div>
                             </form>
                                 <div className='d-flex justify-content-between mt-3'>
-                                    <button 
+                                    <span 
                                     className='text-danger cursor-pointer'
                                     onClick={handleDeleteAccount}
                                     >
                                       Delete Account
-                                    </button>
-                                    <button 
+                                    </span>
+                                    <span 
                                     className='text-danger cursor-pointer'
                                     onClick={handleSignOut}>
                                       Sign Out
-                                    </button>
+                                    </span>
                                 </div>
                                 <p className='text-danger mt-3'>{error && 'Something went wrong!'}</p>
                                 <p className='text-success mt-3'>
                                 {updateSuccess && 'User is updated successfully!'}
+<<<<<<< HEAD
                                 </p> */}
               </div>
 
@@ -245,6 +271,10 @@ const Profile = () => {
                       </button>
                     </div>
                   </div>
+=======
+                                </p>
+                        </div>
+>>>>>>> parent of 30b89d6 (editing profile page)
                 </div>
                 <div class="row mt-3">
                   <div class="d-flex justify-content-center col-12">
