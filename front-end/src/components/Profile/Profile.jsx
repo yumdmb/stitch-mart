@@ -113,7 +113,7 @@ const Profile = () => {
     return (
         <div className='background-color'>
             <div className='containers py-5'>
-            <div className="card">
+            <div className="card" style={{width: "27rem"}}>
                 <div className="card-header text-white" style={{ backgroundColor: "#0B1E33" }}>
                     Profile Settings
                 </div>
@@ -194,29 +194,67 @@ const Profile = () => {
                             </div>
                             {/* <div className="d-flex justify-content-end pt-4">
                                 <button type="button" className="btn text-light" style={{ backgroundColor: "#0B1E33" }} onClick={handleSaveChangeClick}>Save Changes</button>
-                            </div>   */}    
-                            <button className='btn text-light mt-3' style={{ backgroundColor: "#0B1E33" }} >
-                                {loading ? 'Loading...' : 'Update'}
-                            </button>
+                            </div>   */}   
+                            {/* <div class="d-flex justify-content-center mt-3">
+                              <button className='btn btn-block text-light mt-3' style={{ backgroundColor: "#0B1E33", width: "18rem" }} >
+                                  {loading ? 'Loading...' : 'Update'}
+                              </button>
+                            </div>  
                             </div>
                             </form>
                                 <div className='d-flex justify-content-between mt-3'>
-                                    <span 
+                                    <button 
                                     className='text-danger cursor-pointer'
                                     onClick={handleDeleteAccount}
                                     >
                                       Delete Account
-                                    </span>
-                                    <span 
+                                    </button>
+                                    <button 
                                     className='text-danger cursor-pointer'
                                     onClick={handleSignOut}>
                                       Sign Out
-                                    </span>
+                                    </button>
                                 </div>
                                 <p className='text-danger mt-3'>{error && 'Something went wrong!'}</p>
                                 <p className='text-success mt-3'>
                                 {updateSuccess && 'User is updated successfully!'}
-                                </p>
+                                </p> */}
+                                </div>
+                                
+                                <div className='container'>
+
+                                <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-center mt-3">
+                <button class="btn btn-block text-light" style={{ backgroundColor: "#0B1E33", width: "18rem" }}>
+                {loading ? 'Loading...' : 'Update'}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="d-flex justify-content-center col-12">
+            <button class="btn btn-block btn-outline-danger" style={{width: "18rem" }} onClick={handleDeleteAccount}>
+                Delete Account
+            </button>
+        </div>
+        <div class="d-flex justify-content-center col-12 mt-3">
+            <button class="btn btn-block btn-outline-danger" style={{width: "18rem" }} onClick={handleSignOut}>
+                Sign Out
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <p class="text-danger">{ error && 'Something went wrong!' }</p>
+            <p class="text-success">{ updateSuccess && 'User is updated successfully!' }</p>
+        </div>
+    </div>
+
+
+                                </div>
+                                </form>
+                                
                         </div>
                 </div>
             </div>
