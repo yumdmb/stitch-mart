@@ -17,7 +17,10 @@ export const markRead = async (req, res, next) => {
     try {
         const {id, email, category, content} = req.params;
         const noti = await Notification.updateMany(
-                {isRead: false},
+                {
+                    email: email,
+                    isRead: false
+                },
                 {$set: {isRead: true}}, 
             {new: true});
         res.status(200).json(noti);
@@ -29,8 +32,11 @@ export const markRead = async (req, res, next) => {
 export const markReadOne = async (req, res, next) => {
     try {
         const {id, email, category, content} = req.params;
-        const noti = await Notification.findByIdAndUpdate(id,
-            {$set: {isRead: true}}, 
+        const noti = await Notification.updateOne(
+                {
+                    _id: id
+                },
+                {$set: {isRead: true}}, 
             {new: true});
         res.status(200).json(noti);
     } catch (error) {

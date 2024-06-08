@@ -9,7 +9,7 @@ router.get("/unread/:email", notiUnread);
 router.get("/inventory/:email", notiInventory);
 router.get("/order/:email", notiOrder);
 router.get("/appointment/:email", notiAppointment);
-router.put("/markRead", markRead);
-router.put("/markRead/:id", markReadOne);
+router.put("/markRead/:email", markRead);
+router.put("/markReadOne/:id", markReadOne);
 
 export default router;

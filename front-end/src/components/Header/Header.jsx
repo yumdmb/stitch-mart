@@ -226,7 +226,7 @@ export default function Header() {
                 className='profile-picture' 
               />
             ) : (
-              <span className='sign-in'>Log In</span>
+              <button type="button" className='btn btn-outline-warning'>Log In</button>
             )}
           </Link>
         </div>

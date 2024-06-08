@@ -64,11 +64,10 @@
 }
 
 
-.label-in-box p{
+.label-in-box button{
     font-size: medium;
     margin-left: auto;
     margin-top: auto;
-    margin-right: 25px;
 }
 
 .messages{
@@ -81,13 +80,19 @@
     border-radius: 15px;
 }
 
-.bottom-in-message {
+.bottom-in-message{
+    height: fit-content;
     display: flex;
-    margin-bottom: auto;
+    margin-bottom: 5px;
 }
 
-.bottom-in-message p{
+.bottom-in-message h6{
+    margin-bottom: 5px;
+}
+
+.bottom-in-message p {
     margin-left: auto;
+    margin-bottom: 5px;
 }
 
 .messages:hover {
