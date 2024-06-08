@@ -3,43 +3,44 @@ import { useSelector } from 'react-redux'
 import './Notification.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderAfterLogin from '../Header/HeaderAfterLogin';
-import { message } from 'statuses';
 
 function Notification() {
     const [title,setTitle] = useState('All');
     const [noti,setNoti] = useState(null);
+    const [notiCount,setNotiCount] = useState(0);
 
     const {currentUser, loading, error } = useSelector(state => state.user)
 
     const handleReadAllClick = async() => {
-        const res = await fetch('/api/notification/markRead', {
+        const res = await fetch(`/api/notification/markRead/${currentUser.email}`, {
             method: 'PUT',
           });
         if(res.ok){
-            console.log(`Notification has all marked as read`);
+            console.log(`All notification for ${currentUser.username} has been marked as read.`);
         }
         const json = await res.json();
         
         console.log(json);
     }
 
-    const handleMessageClick = async(id) => {
-        const res = await fetch(`/api/notification/markRead/${id}`, {
-            method: 'PUT',
-          });
-        if(res.ok){
-            console.log(`Notification with ID ${id} and ${currentUser.email} marked as read`);
-        }
-        const json = await res.json();
+    // const handleMessageClick = async(id) => {
+    //     const res = await fetch(`/api/notification/markRead/${id}`, {
+    //         method: 'PUT',
+    //       });
+    //     if(res.ok){
+    //         console.log(`Notification with ID ${id} has been marked as read`);
+    //     }
+    //     const json = await res.json();
         
-        console.log(json);
-    }
+    //     console.log(json);
+    // }
 
     const handleAllClick = async() => {
             setTitle('All');
             const res = await fetch(`/api/notification/show/${currentUser.email}`);
             const json = await res.json();
             setNoti(json);
+            setNotiCount(json.length);
             console.log(noti);
     }
 
@@ -48,6 +49,7 @@ function Notification() {
             const res = await fetch(`/api/notification/unread/${currentUser.email}`);
             const json = await res.json();
             setNoti(json);
+            setNotiCount(json.length);
             console.log(noti);
     }
 
@@ -56,6 +58,7 @@ function Notification() {
         const res = await fetch(`/api/notification/inventory/${currentUser.email}`);
         const json = await res.json();
         setNoti(json);
+        setNotiCount(json.length);
         console.log(noti);
     }
 
@@ -64,6 +67,7 @@ function Notification() {
         const res = await fetch(`/api/notification/order/${currentUser.email}`);
         const json = await res.json();
         setNoti(json);
+        setNotiCount(json.length);
         console.log(noti);
     }
 
@@ -72,6 +76,7 @@ function Notification() {
         const res = await fetch(`/api/notification/appointment/${currentUser.email}`);
         const json = await res.json();
         setNoti(json);
+        setNotiCount(json.length);
         console.log(noti);
     }
 
@@ -80,6 +85,7 @@ function Notification() {
             const res = await fetch(`/api/notification/show/${currentUser.email}`);
             const json = await res.json();
             setNoti(json);
+            setNotiCount(json.length);
             console.log(noti);
         };
         fetchNotif();
@@ -112,11 +118,11 @@ function Notification() {
 
             <div className='noti-box'>
                 <div className='label-in-box'>
-                    <h2><strong>{title}</strong></h2>
-                    <p onClick={handleReadAllClick}>Mark all as read</p>
+                    <h2><strong>{title} - {notiCount}</strong></h2>
+                    <button className="btn btn-primary" style={{backgroundColor : '#0B1E33'}} onClick={handleReadAllClick}>Mark all as read</button>
                 </div>    
                 {noti &&
-                    noti.map(notif => {
+                    noti.reverse().map(notif => { //.reverse() to apply the latest one on top
                         const formattedTime = new Date(notif.createdAt).toLocaleTimeString({
                             hour: '2-digit',
                             minute: '2-digit',
@@ -124,11 +130,13 @@ function Notification() {
                             hour12: true,
                         });
 
-                        return <div onClick={() => handleMessageClick(notif._id)} key={notif._id} className='messages' style={{backgroundColor : notif.isRead ? '#cbcbcb' : 'white'}}>
+                        const formattedDate = new Date(notif.createdAt).toLocaleDateString();
+
+                        return <div  key={notif._id} className='messages' style={{backgroundColor : notif.isRead ? '#f8c94a' : 'white'}}>
                             <h6><strong>{notif.category}</strong></h6>
                             <div className='bottom-in-message'>
                                 <h6>{notif.content}</h6>
-                                <p>{formattedTime}</p>
+                                <p>{formattedTime}, {formattedDate}</p>
                             </div>
                         </div>
                 })}
@@ -139,3 +147,4 @@ function Notification() {
 }
 
 export default Notification;
+//onClick={() => handleMessageClick(notif._id)}
