@@ -7,6 +7,7 @@ function ReceiveBooking() {
     };
 
     return (
+        <div  style={{ backgroundColor: "#ffba42", minHeight: "100vh", padding: "20px" }}>
         <div className="receivebooking">
             <div className="receivebookingheader">
                 <h2>Booking Confirmation</h2> 
@@ -47,6 +48,7 @@ function ReceiveBooking() {
                 <button className="button" onClick={handleReceive}>Confirm</button>
             </div>
         </div>
+    </div>
     );
 }
 

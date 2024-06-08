@@ -48,6 +48,7 @@ function TimeAvailable() {
     ];
 
     return (
+    <div style={{ backgroundColor: "#ffba42", minHeight: "100vh", padding: "20px" }}>
         <div className="time-available">
             <div className="header-container">
                 <h2>Embroidery Appointment</h2>
@@ -100,7 +101,9 @@ function TimeAvailable() {
                 </form>
             </div>
         </div>
+     </div>
     );
 }
 
 export default TimeAvailable;
+

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './BookingApp.css';
 
 function Booking() {
     return (
+        <div style={{ backgroundColor: "#ffba42", minHeight: "100vh", padding: "20px" }}>
         <div className="booking">
             <div className="header-container">
                 <h2>Embroidery Booking</h2>
@@ -52,6 +53,7 @@ function Booking() {
                     <button type="submit">Submit Booking</button>
                 </form>
             </div>
+        </div>
         </div>
     );
 }

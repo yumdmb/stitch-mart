@@ -1,36 +1,44 @@
-import './BookingApp.css';
-import React, { useState } from 'react';
-import Booking from './Booking';
-import TimeAvailable from './TimeAvailable';
-import ReceiveBooking from './ReceiveBooking';
-import Header from '../Header/HeaderAfterLogin';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-
+import './BookingApp.css';
 
 function BookingApp() {
+  const navigate = useNavigate();
 
-    return (
+  const navigateTo = (path) => {
+    navigate(path);
+  };
 
-        <div style={{backgroundColor:"#ffba42"}}>
+  return (
+    <div style={{ backgroundColor: "#ffba42" }}>
+      <Header />
+      <div className='book-header'>
+        <h1>Booking</h1>
+      </div>
 
-            <Header/>
-                <div className='book-header'>
-                    <h1>Booking</h1>
-                    
-                </div>
+      <div className="button-container">
+        <button className="feature-button" onClick={() => navigateTo('/time-available')}>
+          <img src="/time-available.png" alt="Time Available" />
+          <span>Embroidery Appointment</span>
+        </button>
+        <button className="feature-button" onClick={() => navigateTo('/booking')}>
+          <img src="/booking.png" alt="Booking" />
+          <span>Embroidery Booking </span>
+        </button>
+        <button className="feature-button" onClick={() => navigateTo('/receive-booking')}>
+          <img src="/receive-booking.png" alt="Receive Booking" />
+          <span>Booking Confirmation </span>
+        </button>
+      </div>
 
-            <TimeAvailable/>
-            <Booking/>
-            <ReceiveBooking />
-            
-            
-
-            <div class="footer">
-            <Footer/>
-            </div>
-
-         </div>
-    );
+      <div className="footer">
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
 export default BookingApp;
+
