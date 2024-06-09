@@ -17,7 +17,7 @@ export const signup = async (req, res, next) => {
 };
 
 export const signin = async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email, password, userType } = req.body;
     try {
         const validUser = await User.findOne({ email });
         if (!validUser) {
@@ -27,6 +27,11 @@ export const signin = async (req, res, next) => {
         if (!validPassword) {
             return next(errorHandler(401, 'Wrong Credentials'));
         }
+        // Check if the userType matches the isAdmin field in the database
+        if ((userType === 'Admin' && validUser.isAdmin) || (userType === 'Buyer' && !validUser.isAdmin)) {
+            return next(errorHandler(403, `Access denied: Incorrect user type selected`));
+        }
+        
         const token = jwt.sign({ id: validUser._id }, "fdsfsdwfewfewf");
         const { password: hashedPassword, ...rest } = validUser._doc;
         const expiry = new Date(Date.now() + 3600000);
