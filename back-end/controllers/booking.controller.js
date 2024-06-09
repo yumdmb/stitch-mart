@@ -1,4 +1,5 @@
 import Booking from '../models/booking.model.js';
+import Notification from '../models/notiModel.js';
 import multer from 'multer';
 import path from 'path';
 
@@ -31,6 +32,13 @@ export const createEmbroideryBooking = async (req, res) => {
             status: 'Pending', // Default status
         });
 
+        const newNoti = new Notification({
+                                email: email,
+                                isRead: false, 
+                                category: 'Order Update',
+                                content: `Booking notification.`
+                                            });
+        await newNoti.save();
         await newBooking.save();
         res.status(201).json({ message: 'Booking created successfully' });
     } catch (error) {
