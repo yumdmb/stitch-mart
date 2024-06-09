@@ -31,7 +31,11 @@ function Booking() {
         e.preventDefault();
         const data = new FormData();
         for (const key in formData) {
-            data.append(key, formData[key]);
+            if (key === 'size' || key === 'quantity') {
+                data.append(key, Number(formData[key]));
+            } else {
+                data.append(key, formData[key]);
+            }
         }
 
         try {
@@ -54,9 +58,10 @@ function Booking() {
     return (
         <div style={{ backgroundColor: "#ffba42", minHeight: "100vh", padding: "20px" }}>
             <div className="booking">
-                <div className="bookingheader"> 
+                <div className="bookingheader">
                     <h2>Embroidery Booking</h2>
                 </div>
+
                 <form onSubmit={handleSubmit}>
                     <div className="form-row">
                         <div className="form-group">
@@ -68,6 +73,7 @@ function Booking() {
                             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
                         </div>
                     </div>
+
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="phone">Phone Number:</label>
@@ -76,7 +82,7 @@ function Booking() {
                         <div className="form-group">
                             <label htmlFor="embroideryType">Embroidery Type:</label>
                             <select id="embroideryType" name="embroideryType" value={formData.embroideryType} onChange={handleChange} required>
-                                <option value="">Select Embroidery Type</option>
+                                <option value="">Select a type</option>
                                 <option value="Outline">Outline</option>
                                 <option value="Whitework">Whitework</option>
                                 <option value="Candle Wicking">Candle Wicking</option>
@@ -85,6 +91,7 @@ function Booking() {
                             </select>
                         </div>
                     </div>
+
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="size">Size (inches):</label>
@@ -95,14 +102,16 @@ function Booking() {
                             <input type="number" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} required />
                         </div>
                     </div>
+
                     <div className="form-group">
                         <label htmlFor="designFile">Design Preferences:</label>
                         <input type="file" id="designFile" name="designFile" onChange={handleChange} required />
                     </div>
+
                     <button type="submit">Submit Booking</button>
                 </form>
             </div>
-        </div>    
+        </div>
     );
 }
 

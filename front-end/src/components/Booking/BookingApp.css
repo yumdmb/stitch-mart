@@ -244,14 +244,3 @@ button[type="submit"]:hover {
 input[type="file"] {
   border: 1px solid white;
 }
-
-/* Specific Styles for Booking Form */
-.booking .form-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.booking .form-group {
-  flex: 1;
-}
