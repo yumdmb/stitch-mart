@@ -8,7 +8,7 @@ export const createAppointment = async (req, res) => {
         const newAppointment = new Appointment({ name, email, phone, date, time });
         const newNoti = new Notification({ email: email,
             isRead: false, 
-            category: 'Appointment Booikng Succeed!',
+            category: 'Appointment Booking Succeeded!',
              content: `Your appointment on ${date}, ${time} has been booked successfully.` });
         await newAppointment.save();
         await newNoti.save();
