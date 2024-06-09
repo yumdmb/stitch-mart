@@ -1,11 +1,17 @@
 import Appointment from '../models/appointment.model.js';
+import Notification from '../models/notiModel.js';
 
 // Controller to handle appointment booking
 export const createAppointment = async (req, res) => {
     try {
         const { name, email, phone, date, time } = req.body;
         const newAppointment = new Appointment({ name, email, phone, date, time });
+        const newNoti = new Notification({ email: 'mnurhakimothman@gmail.com',
+            isRead: false, 
+            category: 'Appointment Booikng Succeed!',
+             content: `Your appointment on ${date}, ${time} has been booked successfully.` });
         await newAppointment.save();
+        await newNoti.save();
         res.status(201).json({ message: 'Appointment booked successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error booking appointment', error });
