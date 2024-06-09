@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './BookingApp.css';
 
@@ -13,7 +12,6 @@ function BookingApp() {
 
   return (
     <div style={{ backgroundColor: "#ffba42" }}>
-      <Header />
       <div className='book-header'>
         <h1>Booking</h1>
       </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
-import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 import './ProductDisplay.css'; // Import CSS file for styling
 import embroideryItems from './embroideryDummy'; // Import sample data
 
@@ -52,7 +51,6 @@ function ProductsDisplay() {
 
     return (
         <div className="products-container">
-            <HeaderAfterLogin />
             <div className="product-cards">
                 {products.map(product => (
                     <ProductCard key={product.id} product={product} />

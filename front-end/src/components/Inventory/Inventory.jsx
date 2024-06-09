@@ -2,7 +2,6 @@ import React from 'react';
 import './Inventory.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
-import HeaderAfterLogin from '../Header/HeaderAfterLogin';
 
 function Inventory() {
 
@@ -15,7 +14,6 @@ function Inventory() {
 
     return (
         <div>
-            <HeaderAfterLogin />
             <div className='inv-container'>
                 <div className='inv-header'>
                     <h1>Inventory</h1>

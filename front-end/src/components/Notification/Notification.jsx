@@ -93,7 +93,6 @@ function Notification() {
 
     return (
         <div>
-            <HeaderAfterLogin />
             <div className='noti-container'>
             <div className='notification-header'>
                 <h1>Notifications</h1>
