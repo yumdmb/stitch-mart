@@ -232,10 +232,24 @@ const Profile = () => {
                                 {updateSuccess && 'User is updated successfully!'}
                                 </p> */}
               </div>
+              <div className="container">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="d-flex justify-content-center mt-3">
+                      <button
+                        class="btn btn-block text-light"
+                        style={{ backgroundColor: "#0B1E33", width: "18rem" }}
+                      >
+                        {loading ? "Loading..." : "Update"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
 
             <div className="container">
-              <div class="row">
+              {/* <div class="row">
                 <div class="col-12">
                   <div class="d-flex justify-content-center mt-3">
                     <button
@@ -246,7 +260,7 @@ const Profile = () => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div class="row mt-3">
                 <div class="d-flex justify-content-center col-12">
                   <button
