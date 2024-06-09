@@ -6,7 +6,7 @@ export const createAppointment = async (req, res) => {
     try {
         const { name, email, phone, date, time } = req.body;
         const newAppointment = new Appointment({ name, email, phone, date, time });
-        const newNoti = new Notification({ email: 'mnurhakimothman@gmail.com',
+        const newNoti = new Notification({ email: email,
             isRead: false, 
             category: 'Appointment Booikng Succeed!',
              content: `Your appointment on ${date}, ${time} has been booked successfully.` });
