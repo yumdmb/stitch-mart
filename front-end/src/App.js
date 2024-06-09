@@ -46,8 +46,8 @@ function App() {
         <Route path="/products" element={<ProductsDisplay />} />
         <Route path="/bookingApp" element={<BookingApp />} />
         <Route path="/time-available" element={<TimeAvailable />} />
-        <Route path="/booking" element={<Booking />} />
-        <Route path="/receive-booking" element={<ReceiveBooking />} />
+        <Route path="/embroidery-booking" element={<Booking />} />
+        <Route path="/receive-confirmation" element={<ReceiveBooking />} />
         <Route path="/tutorial" element={<TutorialApp />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/inventory" element={<Inventory />} />
