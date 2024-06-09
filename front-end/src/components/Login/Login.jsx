@@ -43,7 +43,7 @@ const Login = ({ setUser }) => {
             <form onSubmit={handleSubmit} action="">
                 <h1>Login</h1>
                 <div className='input-box'>
-                    <input id='email' type="text" placeholder='Email' onChange={handleChange}  />
+                    <input className='ps-4 border rounded-5 border-opacity-25' id='email' type="text" placeholder='Email' onChange={handleChange}  />
                     <i class="bi bi-person-fill"></i>
                 </div>
                 <div className='input-box'>
@@ -66,6 +66,11 @@ const Login = ({ setUser }) => {
                     </Link>
                 </div>
             </form>
+            <div>
+            <p className='text-danger fw-bolder fs-7 mt-3'>
+              {error ? error.message || 'Something went wrong!' : ''}
+            </p>
+            </div>
         </div>
         </div>
     )

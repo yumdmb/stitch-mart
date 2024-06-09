@@ -132,8 +132,8 @@ const Profile = () => {
                 <img
                   src={formData.profilePicture || currentUser.profilePicture}
                   alt="Avatar"
-                  className="d-block ui-w-40 rounded-circle"
-                  style={{ width: "10vw", height: "10vw" }}
+                  className="d-block ui-w-40 rounded-circle border border-4 border-dark-subtle"
+                  style={{ width: "12vw", height: "12vw" }}
                 />
                 <div className="media-body d-flex flex-column align-items-center text-center justify-content-center p-4">
                   <label
@@ -232,10 +232,24 @@ const Profile = () => {
                                 {updateSuccess && 'User is updated successfully!'}
                                 </p> */}
               </div>
+              <div className="container">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="d-flex justify-content-center mt-3">
+                      <button
+                        class="btn btn-block text-light"
+                        style={{ backgroundColor: "#0B1E33", width: "18rem" }}
+                      >
+                        {loading ? "Loading..." : "Update"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
 
             <div className="container">
-              <div class="row">
+              {/* <div class="row">
                 <div class="col-12">
                   <div class="d-flex justify-content-center mt-3">
                     <button
@@ -246,7 +260,7 @@ const Profile = () => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div class="row mt-3">
                 <div class="d-flex justify-content-center col-12">
                   <button
@@ -269,9 +283,9 @@ const Profile = () => {
               </div>
               <div class="row mt-3">
                 <div class="col-12">
-                  <p class="text-danger">{error && "Something went wrong!"}</p>
-                  <p class="text-success">
-                    {updateSuccess && "User is updated successfully!"}
+                  <p class="text-danger fw-bolder fs-7 ">{error && "Something went wrong!"}</p>
+                  <p class="text-success  fw-bolder fs-7 ">
+                    {updateSuccess && "User credentials updated successfully!"}
                   </p>
                 </div>
               </div>
