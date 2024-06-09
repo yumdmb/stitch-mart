@@ -132,8 +132,8 @@ const Profile = () => {
                 <img
                   src={formData.profilePicture || currentUser.profilePicture}
                   alt="Avatar"
-                  className="d-block ui-w-40 rounded-circle"
-                  style={{ width: "10vw", height: "10vw" }}
+                  className="d-block ui-w-40 rounded-circle border border-4 border-dark-subtle"
+                  style={{ width: "12vw", height: "12vw" }}
                 />
                 <div className="media-body d-flex flex-column align-items-center text-center justify-content-center p-4">
                   <label
