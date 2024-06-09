@@ -1,37 +1,31 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 import "./Header.css";
 
 export default function Header() {
   let navigate = useNavigate(); // Create a navigate function
-
-  const handleLoginClick = () => {
-    navigate("/login"); // Use navigate to change the route
-  };
-
-  const handleSignUpClick = () => {
-    navigate("/signUp"); // Use navigate to change the route
-  };
 
   const handleFinancialClick = () => {
     navigate("/financialApp"); // Use navigate to change the route
   };
 
   const handleNotiClick = () => {
-    navigate('/notification');  // Use navigate to change the route
-  };  
+    navigate("/notification"); // Use navigate to change the route
+  };
 
   const handleInventoryClick = () => {
-    navigate('/inventory');  // Use navigate to change the route
-  }; 
+    navigate("/inventory"); // Use navigate to change the route
+  };
 
   const goToHome = () => {
-    navigate('/');
+    navigate("/");
   };
-  
-  const { currentUser } = useSelector ((state) => state.user)
+
+  const { currentUser } = useSelector((state) => state.user);
+
+  const isAdmin = currentUser?.isAdmin;
 
   return (
     <div style={{ backgroundColor: "#0B1E33" }} className="sticky-header">
@@ -114,10 +108,13 @@ export default function Header() {
                     <div>Booking</div>
                   </Link>
                 </li>
-                <li>
+
+                {isAdmin && (
+                  <>
+                  <li>
                   <button
-                      className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
-                      onClick={handleInventoryClick}
+                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                    onClick={handleInventoryClick}
                   >
                     <div>
                       <svg
@@ -135,27 +132,6 @@ export default function Header() {
                     <div>Inventory</div>
                   </button>
                 </li>
-                <li>
-                  <button
-                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
-                    onClick={handleNotiClick}
-                  >
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="#FFBA42"
-                        className="bi bi-bell-fill"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
-                      </svg>
-                    </div>
-                    <div>Notification</div>
-                  </button>
-                </li>
-                
                 <li>
                   <button
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
@@ -179,10 +155,13 @@ export default function Header() {
                     <div>Finance</div>
                   </button>
                 </li>
+                </>
+                )}
+
                 {/* <li>
-                  <a
-                    href=""
+                  <button
                     className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                    onClick={handleInventoryClick}
                   >
                     <div>
                       <svg
@@ -190,18 +169,60 @@ export default function Header() {
                         width="24"
                         height="24"
                         fill="#FFBA42"
-                        className="bi bi-person-circle"
+                        className="bi bi-backpack3-fill"
                         viewBox="0 0 16 16"
                       >
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path d="M5 10v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
+                        <path d="M6 2v.341a6 6 0 0 0-1.308.653l-.416-1.247a1 1 0 0 0-1.749-.284l-.77 1.027a1 1 0 0 0-.149.917l.803 2.407A6 6 0 0 0 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8c0-.771-.146-1.509-.41-2.186l.801-2.407a1 1 0 0 0-.148-.917l-.77-1.027a1 1 0 0 0-1.75.284l-.415 1.247A6 6 0 0 0 10 2.34V2a2 2 0 1 0-4 0m1 0a1 1 0 0 1 2 0v.083a6 6 0 0 0-2 0zm5.941 2.595a6 6 0 0 0-.8-.937l.531-1.595.77 1.027zM3.86 3.658a6 6 0 0 0-.8.937L2.557 3.09l.77-1.027zm.18 3.772a4 4 0 0 1 7.92 0 .5.5 0 1 1-.99.142 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.142M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z" />
+                      </svg>
+                    </div>
+                    <div>Inventory</div>
+                  </button>
+                </li> */}
+
+                <li>
+                  <button
+                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                    onClick={handleNotiClick}
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="#FFBA42"
+                        className="bi bi-bell-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                      </svg>
+                    </div>
+                    <div>Notification</div>
+                  </button>
+                </li>
+
+                {/* <li>
+                  <button
+                    className="nav-link d-flex flex-column align-items-center justify-content-center text-white"
+                    onClick={handleFinancialClick} // onClick event handler
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="#FFBA42"
+                        className="bi bi-graph-up"
+                        viewBox="0 0 16 16"
+                      >
                         <path
-                          fillRule="evenodd"
-                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                          fill-rule="evenodd"
+                          d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"
                         />
                       </svg>
                     </div>
-                    <div>Profile</div>
-                  </a>
+                    <div>Finance</div>
+                  </button>
                 </li> */}
               </ul>
 
@@ -218,18 +239,20 @@ export default function Header() {
               </form>
 
               <div className="text-end ms-lg-4">
-          <Link to='/profile' className="profile-link">
-            {currentUser ? (
-              <img 
-                src={currentUser.profilePicture} 
-                alt='profile' 
-                className='profile-picture' 
-              />
-            ) : (
-              <button type="button" className='btn btn-outline-warning'>Log In</button>
-            )}
-          </Link>
-        </div>
+                <Link to="/profile" className="profile-link">
+                  {currentUser ? (
+                    <img
+                      src={currentUser.profilePicture}
+                      alt="profile"
+                      className="profile-picture"
+                    />
+                  ) : (
+                    <button type="button" className="btn btn-outline-warning">
+                      Log In
+                    </button>
+                  )}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -237,4 +260,3 @@ export default function Header() {
     </div>
   );
 }
-

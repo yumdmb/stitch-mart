@@ -69,7 +69,7 @@ const Login = ({ setUser }) => {
           <div className="form-floating mb-5">
             <select
               id="userType"
-              className="form-select pt-3 ps-4 bg-transparent border rounded-5 border-opacity-25 text-white"
+              className="form-select pt-3 ps-4 bg-transparent border rounded-5 border-opacity-25 text-white fw-semibold"
               aria-label="Floating label select example"
               onChange={handleChange}
             >

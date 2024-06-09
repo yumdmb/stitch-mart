@@ -28,8 +28,8 @@ export const signin = async (req, res, next) => {
             return next(errorHandler(401, 'Wrong Credentials'));
         }
         // Check if the userType matches the isAdmin field in the database
-        if ((userType === 'Admin' && validUser.isAdmin) || (userType === 'Buyer' && !validUser.isAdmin)) {
-            return next(errorHandler(403, `Access denied: Incorrect user type selected`));
+        if ((userType === 'Admin' && !validUser.isAdmin) || (userType === 'Buyer' && validUser.isAdmin)) {
+            return next(errorHandler(403, `Access denied : Incorrect user type selected`));
         }
         
         const token = jwt.sign({ id: validUser._id }, "fdsfsdwfewfewf");
