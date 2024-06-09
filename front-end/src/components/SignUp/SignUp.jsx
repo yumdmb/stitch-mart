@@ -64,12 +64,12 @@ function SignUp() {
                 <button disabled={loading} id='wrapper-button' type='submit'>
                     {loading ? 'Loading...' : 'Sign Up'}
                 </button>
-                
+              </form>
                 <div className='register-link'>
                     <p>Already have an account?</p>
                     <Link to='/login'>Login</Link>
                 </div>
-            </form>
+                <p className='text-danger fw-bolder fs-7 mt-3'>{error && 'Something went wrong!'}</p>
         </div>
         </div>
     )

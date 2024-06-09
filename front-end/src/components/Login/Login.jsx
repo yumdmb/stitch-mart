@@ -66,6 +66,11 @@ const Login = ({ setUser }) => {
                     </Link>
                 </div>
             </form>
+            <div>
+            <p className='text-danger fw-bolder fs-7 mt-3'>
+              {error ? error.message || 'Something went wrong!' : ''}
+            </p>
+            </div>
         </div>
         </div>
     )
