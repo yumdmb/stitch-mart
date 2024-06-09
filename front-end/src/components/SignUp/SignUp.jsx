@@ -45,11 +45,11 @@ function SignUp() {
             <form onSubmit={handleSubmit}>
                 <h1>Register Account</h1>
                 <div className='input-box'>
-                    <input id='username' type="text" placeholder='Username' onChange={handleChange}  />
+                    <input className='ps-4 border rounded-5 border-opacity-25' id='username' type="text" placeholder='Username' onChange={handleChange}  />
                     <i class="bi bi-person-fill"></i>
                 </div>
                 <div className='input-box'>
-                    <input id='email' type="email" placeholder='Email' onChange={handleChange}  />
+                    <input className='ps-4 border rounded-5 border-opacity-25' id='email' type="email" placeholder='Email' onChange={handleChange}  />
                     <i class="bi bi-envelope-fill"></i>
                 </div>
                 <div className='input-box'>

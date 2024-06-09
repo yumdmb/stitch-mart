@@ -283,9 +283,9 @@ const Profile = () => {
               </div>
               <div class="row mt-3">
                 <div class="col-12">
-                  <p class="text-danger">{error && "Something went wrong!"}</p>
-                  <p class="text-success">
-                    {updateSuccess && "User is updated successfully!"}
+                  <p class="text-danger fw-bolder fs-7 ">{error && "Something went wrong!"}</p>
+                  <p class="text-success  fw-bolder fs-7 ">
+                    {updateSuccess && "User credentials updated successfully!"}
                   </p>
                 </div>
               </div>
