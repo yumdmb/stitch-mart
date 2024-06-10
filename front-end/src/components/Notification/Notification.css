@@ -70,7 +70,7 @@
     margin-top: auto;
 }
 
-.messages{
+.message{
     transition: transform 0.3s ease;
     font-size: small;
     width: auto;
@@ -95,7 +95,7 @@
     margin-bottom: 5px;
 }
 
-.messages:hover {
+.message:hover {
     transform: translateY(-5px);
     transform: translateX(-5px); /* Float the button 5 pixels upwards */
 }

@@ -10,6 +10,16 @@ export const fetchInventory = async (req, res, next) => {
     }
 }
 
+export const fetchInventoryId = async (req, res, next) => {
+    try{
+        const InventoryFetched = await Inventory.findById(req.params.id);
+        return res.status(200).json(InventoryFetched);
+    }
+    catch (error) {
+        next(error);
+    }
+}
+
 // export const createInventory = async (req, res, next) => {
 //     const newInventory = new Inventory({ item: 'Hello',
 //                                     price: 25,
