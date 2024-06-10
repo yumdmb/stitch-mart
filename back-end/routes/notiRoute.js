@@ -1,5 +1,5 @@
 import express from 'express';
-import { fetchNoti, notification, notiUnread, notiInventory, notiOrder, notiAppointment, markRead, markReadOne, deleteNoti} from '../controllers/notiControllers.js';
+import { fetchNoti, notification, notiUnread, notiInventory, notiOrder, notiAppointment, markRead, markReadOne} from '../controllers/notiControllers.js';
 
 const router = express.Router();
 
@@ -11,6 +11,5 @@ router.get("/order/:email", notiOrder);
 router.get("/appointment/:email", notiAppointment);
 router.put("/markRead/:email", markRead);
 router.put("/markReadOne/:id", markReadOne);
-router.delete("/deleteNoti", deleteNoti);
 
 export default router;
