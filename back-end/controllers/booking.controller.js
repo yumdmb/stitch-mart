@@ -1,7 +1,6 @@
 import Booking from '../models/booking.model.js';
 import Notification from '../models/notiModel.js';
 import multer from 'multer';
-import path from 'path';
 
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
@@ -33,11 +32,11 @@ export const createEmbroideryBooking = async (req, res) => {
         });
 
         const newNoti = new Notification({
-                                email: email,
-                                isRead: false, 
-                                category: 'Order Update',
-                                content: `Booking notification.`
-                                            });
+            email: email,
+            isRead: false,
+            category: 'Order Update',
+            content: `Booking notification.`
+        });
         await newNoti.save();
         await newBooking.save();
         res.status(201).json({ message: 'Booking created successfully' });
