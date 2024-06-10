@@ -24,16 +24,15 @@ function ReceiveBooking() {
         fetchBookings();
     }, []);
 
-    const handleGenerateInvoice = async (bookingId) => {
+    const handleGenerateInvoice = async (bookingId, bookingEmail) => {
         try {
-            const response = await fetch('/api/invoices/generate', {
+            const response = await fetch(`/api/invoices/generate`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ bookingId }),
+                body: JSON.stringify({ bookingId, bookingEmail }),
             });
-
             const data = await response.json();
             if (response.ok) {
                 setInvoice(data.invoice);  // Ensure data.invoice is set here
@@ -63,7 +62,7 @@ function ReceiveBooking() {
                             <p><strong>Quantity:</strong> {booking.quantity}</p>
                             <p><strong>Price:</strong> RM{booking.size * booking.quantity * 10}</p>
                             <div className="button-container-center">
-                                <button className="button" onClick={() => handleGenerateInvoice(booking._id)}>Confirm Booking</button>
+                                <button className="button" onClick={() => handleGenerateInvoice(booking._id, booking.email)}>Confirm Booking</button>
                             </div>
                         </div>
                     ))}

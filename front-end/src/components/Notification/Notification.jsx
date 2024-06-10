@@ -8,8 +8,13 @@ function Notification() {
     const [title,setTitle] = useState('All');
     const [noti,setNoti] = useState(null);
     const [notiCount,setNotiCount] = useState(0);
+    const [read, setRead] = useState(false);
 
-    const {currentUser, loading, error } = useSelector(state => state.user)
+    const {currentUser, loading, error } = useSelector(state => state.user);
+
+    useEffect(() => {
+        
+    },[read]);
 
     const handleReadAllClick = async() => {
         const res = await fetch(`/api/notification/markRead/${currentUser.email}`, {
@@ -21,6 +26,7 @@ function Notification() {
         const json = await res.json();
         
         console.log(json);
+        setRead(true);
     }
 
     // const handleMessageClick = async(id) => {

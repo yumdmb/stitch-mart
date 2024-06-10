@@ -25,8 +25,8 @@ function ProductCard({ product }) {
                     />
                     <p>{product.about}</p>
                     <p><strong>Price:</strong> RM {product.price}</p>
-                    <p><strong>In Stock: </strong>{product.quantity}</p>
-                    <button className="btn btn-warning" onClick={() => handleClick(product._id)}>Add to Cart</button>
+                    <p><strong>In Stock: </strong>{product.quantity>0 ? product.quantity : <i>Sold out</i>}</p>
+                    <button className="btn btn-warning" style={product.quantity>0 ? {} : {backgroundColor: '#ff0000'}} onClick={product.quantity>0 ? () => handleClick(product._id) : null}>Add to Cart</button>
                 </div>
             </div>
         </div>

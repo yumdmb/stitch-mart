@@ -1,9 +1,11 @@
 import Booking from '../models/booking.model.js';
 import BookingInvoice from '../models/bookinginvoice.model.js';
+import Notification from '../models/notiModel.js';
 
 export const generateInvoice = async (req, res) => {
     try {
-        const { bookingId } = req.body;
+        const {bookingId } = req.body;
+        const {bookingEmail} = req.body;
 
         // Fetch booking details
         const booking = await Booking.findById(bookingId);
@@ -29,7 +31,13 @@ export const generateInvoice = async (req, res) => {
         });
 
         await newInvoice.save();
-
+        const noti = new Notification({ email: bookingEmail,
+            isRead: false, 
+            category: 'Order Update',
+            content: `Your booking order for ${bookingId} has been confirmed.`});
+            await noti.save();
+        
+        await Booking.findByIdAndDelete(bookingId);
         res.status(201).json({ message: 'Invoice generated successfully', invoice: newInvoice });
     } catch (error) {
         res.status(500).json({ message: 'Error generating invoice', error });

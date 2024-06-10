@@ -7,25 +7,34 @@ import { useSelector } from 'react-redux'
 function ProductsDisplay() {
     const [products, setProducts] = useState([]);
     const [carts, setCarts] = useState(null);
-    const {currentUser, loading, error } = useSelector(state => state.user)
+    const [totalPrice, setTotalPrice] = useState(null);
+    const {currentUser, loading, error } = useSelector(state => state.user);
 
+
+    const fetchProduct = async() =>{
+        const res = await fetch(`/api/inventory`);
+        const json = await res.json();
+        setProducts(json);
+        console.log(products);
+    };
+    const fetchCart = async() =>{
+        const res = await fetch(`/api/cart/show`);
+        const json = await res.json();
+        setCarts(json);
+        console.log(carts);
+    };
+    const fetchTotalPrice = async() =>{
+        const res = await fetch(`/api/cart/totalPrice`);
+        const json = await res.json();
+        setTotalPrice(json.totalPrice);
+        console.log(totalPrice);
+    }
 
     useEffect(() => {
-        const fetchProduct = async() =>{
-            const res = await fetch(`/api/inventory`);
-            const json = await res.json();
-            setProducts(json);
-            console.log(products);
-        };
-        const fetchCart = async() =>{
-            const res = await fetch(`/api/cart/show`);
-            const json = await res.json();
-            setCarts(json);
-            console.log(carts);
-        };
         fetchProduct();
         fetchCart();
-    },[]);
+        fetchTotalPrice();
+    },[carts]);
 
     const addItem = async(id) => {
         const res = await fetch(`/api/cart/editAdd/${id}`,{
@@ -43,6 +52,13 @@ function ProductsDisplay() {
         console.log(json);
     }
 
+    const checkout = async() => {
+        const res = await fetch(`/api/cart/checkout/${currentUser.email}`,{
+            method: 'POST'
+        });
+        const json = await res.json();
+        console.log(json);
+    }
 
     return (
         <div className="products-container">
@@ -85,8 +101,18 @@ function ProductsDisplay() {
                             </h1>
                         </div>
                     )}
-                </div>
+
+                    {carts && carts.length > 0 ? (
+                        <div className='total-price'>
+                            <h2 className='text'><strong>Total Price: </strong>RM {totalPrice}</h2>
+                            <button className="btn btn-primary" onClick={checkout}> Checkout </button>
+                        </div>
+                    ) : (
+                        <>
+                        </>
+                    )}
             </div>
+        </div>
     );
 }
 

@@ -1,5 +1,6 @@
 import Cart from '../models/cart.model.js';
 import Inventory from "../models/inventory.model.js";
+import Notification from '../models/notiModel.js';
 
 export const createCart = async (req, res, next) => {
     try{
@@ -86,10 +87,68 @@ export const editMinus = async (req, res, next) => {
     }
 }
 
+export const checkout = async (req, res, next) => {
+    const cartFetched = await Cart.find({});
+    const {email} = req.params;
+    const cartDetails = cartFetched.map(cart => 
+        `${cart.item} (${cart.quantity})`
+    ).join('\n');
+
+    for (const cartItem of cartFetched) {
+        const inventoryItem = await Inventory.findById(cartItem.itemId);
+
+        if (!inventoryItem) {
+            return res.status(404).json({ message: `Item ${cartItem.item} not found in inventory` });
+        }
+
+        if (inventoryItem.quantity < cartItem.quantity) {
+            return res.status(400).json({ message: `Insufficient stock for item ${cartItem.item}` });
+        }
+
+        inventoryItem.quantity -= cartItem.quantity;
+        await inventoryItem.save();
+
+        if (inventoryItem.quantity<5) {
+            const notiLowInv = new Notification({ email: 'mnurhakimothman@gmail.com', //since seller
+                isRead: false, 
+                category: 'Low Inventory Alert',
+                content: `${inventoryItem.item} is running low! Only ${inventoryItem.quantity} is left!.`});
+            await notiLowInv.save();
+        }
+    }
+
+    const notiBuyer = new Notification({
+        email: email,
+        isRead: false,
+        category: 'Order Update',
+        content: `Your items : \n${cartDetails}, has been booked successfully.`
+    });
+
+    const notiSeller = new Notification({ email: 'mnurhakimothman@gmail.com',
+    isRead: false, 
+    category: 'Order Update',
+        content: `${cartDetails} is booked from ${email}.`});
+    await notiBuyer.save();
+    await notiSeller.save();
+    await Cart.deleteMany({})
+    return res.status(201).json(notiSeller);
+}
+
 export const fetchCart = async (req, res, next) => {
     try{
         const cartFetched = await Cart.find({});
         return res.status(200).json(cartFetched);
+    }
+    catch (error) {
+        next(error);
+    }
+}
+
+export const fetchTotalPrice = async (req, res, next) => {
+    try{
+        const cartFetched = await Cart.find({});
+        const totalPrice = cartFetched.reduce((accumulator, cart) => accumulator + cart.totalPrice, 0);
+        return res.status(200).json({totalPrice});
     }
     catch (error) {
         next(error);

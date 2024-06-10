@@ -6,12 +6,17 @@ export const createAppointment = async (req, res) => {
     try {
         const { name, email, phone, date, time } = req.body;
         const newAppointment = new Appointment({ name, email, phone, date, time });
-        const newNoti = new Notification({ email: email,
+        const notiBuyer = new Notification({ email: email,
             isRead: false, 
             category: 'Appointment Booking Succeeded!',
              content: `Your appointment on ${date}, ${time} has been booked successfully.` });
+        const notiSeller = new Notification({ email: 'mnurhakimothman@gmail.com',
+        isRead: false, 
+        category: 'Appointment Booking Succeeded!',
+            content: `You has appointment with customer ${name} (${email}) on ${date}, ${time} has been booked successfully.` });
         await newAppointment.save();
-        await newNoti.save();
+        await notiBuyer.save();
+        await notiSeller.save();
         res.status(201).json({ message: 'Appointment booked successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error booking appointment', error });

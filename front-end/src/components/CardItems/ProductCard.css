@@ -43,6 +43,7 @@
 .product-info img {
     height: auto;
     width: auto;
+    margin-bottom: 30px;
 }
 
 .product-info p {

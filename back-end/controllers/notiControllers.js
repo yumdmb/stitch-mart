@@ -93,3 +93,13 @@ export const notiAppointment = async (req, res) => {
         console.log(error);
     }
 }
+
+// export const deleteNoti = async (req, res) => {
+//     try{
+//         const nt = await Notification.deleteMany({});
+//         return res.status(201).json(nt);
+//     }
+//     catch (error) {
+//         console.log(error);
+//     }
+// }

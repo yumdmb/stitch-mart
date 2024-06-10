@@ -31,13 +31,21 @@ export const createEmbroideryBooking = async (req, res) => {
             status: 'Pending', // Default status
         });
 
-        const newNoti = new Notification({
+        const notiBuyer = new Notification({
             email: email,
             isRead: false,
             category: 'Order Update',
-            content: `Booking notification.`
+            content: `One of your items is in approval.`
         });
-        await newNoti.save();
+
+        const notiSeller = new Notification({
+            email: 'mnurhakimothman@gmail.com',
+            isRead: false,
+            category: 'Order Update',
+            content: `User ${name} (${email}) has booked for your custom embroidery services. Don't forget to approve it!.`
+        });
+        await notiSeller.save();
+        await notiBuyer.save();
         await newBooking.save();
         res.status(201).json({ message: 'Booking created successfully' });
     } catch (error) {
