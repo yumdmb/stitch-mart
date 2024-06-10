@@ -28,7 +28,7 @@ function ContactUsForm() {
   };
 
   return (
-    <div className="contact-form-container">
+<div className="contact-form-container">
       <h2 className="contact-form-title">Contact Us</h2>
       <form ref={form} onSubmit={sendEmail} className="contact-form">
         <div className="form-group">
@@ -57,6 +57,7 @@ function ContactUsForm() {
           <label htmlFor="message">Message:</label>
           <textarea
             id="message"
+            name="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
