@@ -151,6 +151,15 @@ button[type="submit"]:hover {
   max-width: 90%;
 }
 
+.bookingheader {
+  color: #fff;
+  background-color: #013c58;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 40%;
+  margin: 0 auto 15px;
+}
+
 .booking-content {
   text-align: left;
 }
@@ -208,7 +217,6 @@ button[type="submit"]:hover {
   background-color: #f2f2f2;
 }
 
-
 .invoice-recap table td {
   background-color: #ffffff;
 }
@@ -231,7 +239,6 @@ button[type="submit"]:hover {
 .button:hover {
   background-color: #0056b3;
 }
-
 
 /* File input field with white border */
 input[type="file"] {

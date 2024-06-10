@@ -7,11 +7,13 @@ import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 import notiRoutes from './routes/notiRoute.js';
 import appointmentRoute from './routes/appointment.route.js';
+import bookingRoute from './routes/booking.route.js';
 import cookieParser from 'cookie-parser';
 import nodemailer from 'nodemailer';
 import orderRoutes from './routes/order.route.js';
 import clientRoutes from './routes/client.route.js';
 import paymentRoutes from './routes/payment.route.js';
+import inventoryRoutes from './routes/inventory.route.js';
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://adam:adam@cluster0.kvg7je5.mongodb.net/stitch-mart?retryWrites=true&w=majority&appName=Cluster0")
@@ -38,9 +40,11 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/notification", notiRoutes);
 app.use('/api/appointments', appointmentRoute);//appointment route
+app.use('/api/bookings', bookingRoute);
 app.use('/api/clients', clientRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/inventory', inventoryRoutes);
 
 // Example route to send an email
 app.post('/send-email', async (req, res) => {

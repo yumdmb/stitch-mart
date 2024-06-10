@@ -10,21 +10,23 @@ function TimeAvailable() {
 
     useEffect(() => {
         const fetchAvailableSlots = async () => {
-            try {
-                const response = await fetch('/api/appointments/time-available');
-                if (response.ok) {
-                    const data = await response.json();
-                    setAvailableTimeSlots(data.slots);
-                } else {
-                    console.error('Failed to fetch available slots');
+            if (selectedDate) {
+                try {
+                    const response = await fetch(`/api/appointments/time-available?date=${selectedDate.toISOString().split('T')[0]}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setAvailableTimeSlots(data.slots);
+                    } else {
+                        console.error('Failed to fetch available slots');
+                    }
+                } catch (error) {
+                    console.error('Error fetching available slots:', error);
                 }
-            } catch (error) {
-                console.error('Error fetching available slots:', error);
             }
         };
 
         fetchAvailableSlots();
-    }, []);
+    }, [selectedDate]);
 
     const handleDateChange = (date) => {
         setSelectedDate(date[0]);
@@ -130,3 +132,4 @@ function TimeAvailable() {
 }
 
 export default TimeAvailable;
+

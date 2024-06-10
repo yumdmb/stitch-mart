@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Inventory.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
@@ -6,11 +6,24 @@ import { useNavigate } from 'react-router-dom';
 function Inventory() {
 
     let navigate = useNavigate();
+    const [product, setProduct] = useState(null);
 
     const goToHome = () => {
         navigate('/');
         console.log("Navigate to Home");
       };
+
+    useEffect(() => {
+        fetchProduct();
+    },[])
+
+    const fetchProduct = async() =>{
+        const res = await fetch(`/api/inventory`);
+        const json = await res.json();
+        setProduct(json);
+        console.log('Inventory fetched');
+        console.log(product);
+    };
 
     return (
         <div>
@@ -28,56 +41,24 @@ function Inventory() {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Item Name</th>
-                                    <th>Specifications</th>
+                                    <th>Product Name</th>
                                     <th>Quantity</th>
-                                    <th>Price/Unit</th>
+                                    <th>Price</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Embroidery Hoop</td>
-                                    <td>6inch</td>
-                                    <td>10</td>
-                                    <td>$6.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Embroidery Hoop</td>
-                                    <td>10inch</td>
-                                    <td>9</td>
-                                    <td>$10.00</td>
-                                </tr>
-                                <tr>
-                                    <td>White Fabric</td>
-                                    <td>20x20inch</td>
-                                    <td>10</td>
-                                    <td>$6.00</td>
-                                </tr>
-                                <tr>
-                                    <td>White Thread</td>
-                                    <td>1m</td>
-                                    <td>50</td>
-                                    <td>$2.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Red Thread</td>
-                                    <td>1m</td>
-                                    <td>50</td>
-                                    <td>$2.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Green Thread</td>
-                                    <td>1m</td>
-                                    <td>45</td>
-                                    <td>$2.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Green Thread</td>
-                                    <td>1m</td>
-                                    <td>47</td>
-                                    <td>$2.00</td>
-                                </tr>
-                            </tbody>
+                                    {product && product.map((prod) =>
+                                        {
+                                           return <tbody key = {prod._id}>
+                                                 <tr>
+                                                    <td>{prod.item}</td>
+                                                    <td>{prod.quantity}</td>
+                                                    <td>${prod.price}</td>
+                                                </tr>
+                                            </tbody>
+                                        }
+                                    )}
+                                    
+                                
                         </table>
                     </div>
 
@@ -95,12 +76,8 @@ function Inventory() {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="name">Item Name:</label>
+                                    <label htmlFor="name">Product Name:</label>
                                     <input type="text" id="name" name="name" required />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="specifications">Specifications:</label>
-                                    <input type="text" id="specifications" name="specifications" required />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="quantity">Quantity:</label>
