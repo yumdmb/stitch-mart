@@ -1,8 +1,5 @@
 import Booking from '../models/booking.model.js';
 import BookingInvoice from '../models/bookinginvoice.model.js';
-import PDFDocument from 'pdfkit';
-import fs from 'fs';
-import path from 'path';
 
 export const generateInvoice = async (req, res) => {
     try {
@@ -33,30 +30,7 @@ export const generateInvoice = async (req, res) => {
 
         await newInvoice.save();
 
-        // Generate PDF
-        const doc = new PDFDocument();
-        const filePath = path.join('uploads', `${newInvoice.invoiceNo}.pdf`);
-        const stream = fs.createWriteStream(filePath);
-        doc.pipe(stream);
-        doc.fontSize(25).text('Invoice', { align: 'center' });
-        doc.moveDown();
-        doc.fontSize(16).text(`Invoice No: ${newInvoice.invoiceNo}`);
-        doc.text(`Invoice Date: ${newInvoice.invoiceDate}`);
-        doc.text(`Customer: ${booking.name}`);
-        doc.moveDown();
-        doc.text('Items:');
-        doc.moveDown();
-        items.forEach(item => {
-            doc.text(`${item.embroideryType} - ${item.size} inches - ${item.quantity} pcs - RM${item.price}`);
-        });
-        doc.moveDown();
-        doc.text(`Total: RM${total}`);
-        doc.end();
-
-        stream.on('finish', () => {
-            res.status(201).json({ message: 'Invoice generated successfully', invoicePath: filePath });
-        });
-
+        res.status(201).json({ message: 'Invoice generated successfully', invoice: newInvoice });
     } catch (error) {
         res.status(500).json({ message: 'Error generating invoice', error });
     }
@@ -70,3 +44,4 @@ export const getInvoices = async (req, res) => {
         res.status(500).json({ message: 'Error retrieving invoices', error });
     }
 };
+
