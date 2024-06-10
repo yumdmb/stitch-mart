@@ -98,6 +98,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
+    "react-toastify": "^10.0.5",
     "readdirp": "^3.6.0",
     "redux-persist": "^6.0.0",
     "safe-buffer": "^5.2.1",
