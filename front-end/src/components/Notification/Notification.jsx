@@ -131,7 +131,7 @@ function Notification() {
 
                         const formattedDate = new Date(notif.createdAt).toLocaleDateString();
 
-                        return <div  key={notif._id} className='messages' style={{backgroundColor : notif.isRead ? '#f8c94a' : 'white'}}>
+                        return <div  key={notif._id} className='message' style={{backgroundColor : notif.isRead ? '#f8c94a' : 'white'}}>
                             <h6><strong>{notif.category}</strong></h6>
                             <div className='bottom-in-message'>
                                 <h6>{notif.content}</h6>
