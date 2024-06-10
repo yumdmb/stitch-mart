@@ -4,9 +4,23 @@ import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
 export const signup = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, confirmPassword, userType } = req.body;
+  
+  // Validate the userType field
+  const allowedUserTypes = ['Buyer', 'Admin'];  // Add all allowed user types here
+  if (!allowedUserTypes.includes(userType)) {
+    return next(errorHandler(400, "Please select your user type"));
+  }
+
+  // Check if password and confirmPassword match
+  if (password !== confirmPassword) {
+    return next(errorHandler(400, "Passwords do not match"));
+  }
+
+  const isAdmin = userType === 'Admin';
+  
   const hashedPassword = bcrypt.hashSync(password, 10);
-  const newUser = new User({ username, email, password: hashedPassword });
+  const newUser = new User({ username, email, password: hashedPassword, isAdmin });
   try {
     await newUser.save();
     res.status(201).json({ message: "User created successfully!" });
