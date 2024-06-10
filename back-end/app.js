@@ -8,6 +8,7 @@ import authRoutes from './routes/auth.route.js';
 import notiRoutes from './routes/notiRoute.js';
 import appointmentRoute from './routes/appointment.route.js';
 import bookingRoute from './routes/booking.route.js';
+import bookingInvoiceRoute from './routes/bookinginvoice.route.js';
 import cookieParser from 'cookie-parser';
 import nodemailer from 'nodemailer';
 import orderRoutes from './routes/order.route.js';
@@ -42,6 +43,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/notification", notiRoutes);
 app.use('/api/appointments', appointmentRoute);//appointment route
 app.use('/api/bookings', bookingRoute);
+app.use('/api/invoices', bookingInvoiceRoute);
 app.use('/api/clients', clientRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/orders', orderRoutes);
