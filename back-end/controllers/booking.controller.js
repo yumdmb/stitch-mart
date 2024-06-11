@@ -35,14 +35,14 @@ export const createEmbroideryBooking = async (req, res) => {
             email: email,
             isRead: false,
             category: 'Order Update',
-            content: `One of your items is in approval.`
+            content: `One of your items needs booking confirmation.`
         });
 
         const notiSeller = new Notification({
             email: 'mnurhakimothman@gmail.com',
             isRead: false,
             category: 'Order Update',
-            content: `User ${name} (${email}) has booked for your custom embroidery services. Don't forget to approve it!.`
+            content: `User ${name} (${email}) is on process to book for your custom embroidery services.`
         });
         await notiSeller.save();
         await notiBuyer.save();

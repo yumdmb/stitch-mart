@@ -36,6 +36,11 @@ export const generateInvoice = async (req, res) => {
             category: 'Order Update',
             content: `Your booking order for ${bookingId} has been confirmed.`});
             await noti.save();
+        const notiSeller = new Notification({ email: bookingEmail,
+            isRead: false, 
+            category: 'Order Update',
+            content: `Booking order for ${bookingId} has been confirmed.`});
+            await notiSeller.save();
         
         await Booking.findByIdAndDelete(bookingId);
         res.status(201).json({ message: 'Invoice generated successfully', invoice: newInvoice });
