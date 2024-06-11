@@ -1,3 +1,4 @@
+import { truncate } from "fs";
 import Inventory from "../models/inventory.model.js";
 
 export const fetchInventory = async (req, res, next) => {
