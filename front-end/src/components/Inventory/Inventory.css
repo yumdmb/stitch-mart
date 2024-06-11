@@ -82,7 +82,7 @@
     margin: 50px auto 15px;
 }
 
-button[type="confirm"] {
+button[type="submit"] {
     background-color: #007bff; 
     border: none;
     color: white;
@@ -97,7 +97,7 @@ button[type="confirm"] {
     transition-duration: 0.4s;
 }
 
-button[type="confirm"]:hover {
+button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
