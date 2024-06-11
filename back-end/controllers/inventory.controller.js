@@ -1,3 +1,4 @@
+import { truncate } from "fs";
 import Inventory from "../models/inventory.model.js";
 
 export const fetchInventory = async (req, res, next) => {
@@ -19,6 +20,32 @@ export const fetchInventoryId = async (req, res, next) => {
         next(error);
     }
 }
+
+// export async function editInventory(req, res, next) {
+//     try {
+//         const { name, quantity } = req.body;
+
+//         const inventory = await Inventory.find(name);
+
+//         await Inventory.update(
+//             {
+//                 item: name
+//             },
+//             {$set: {quantity: 10}}, 
+//         {new: true});
+
+//         // if (!inventory) {
+//         //     return res.status(404).send('Item not found');
+//         // }
+
+//         // inventory.quantity += quantity;
+//         // await inventory.save();
+
+//         res.json(inventory);
+//     } catch (error) {
+//         res.status(500).send('Server error');
+//     }
+// }
 
 // export const createInventory = async (req, res, next) => {
 //     const newInventory = new Inventory({ item: 'Hello',
