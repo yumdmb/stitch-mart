@@ -118,7 +118,10 @@ function Inventory() {
                                     <label htmlFor="quantity">Quantity:</label>
                                     <input type="number" id="quantity" name="quantity" min="1" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} required />
                                 </div>
-                                <button type="submit">Confirm</button>
+                                <div className='button-sub'>
+                                    <button type="submit">Confirm</button>
+                                </div>
+                                
                             </div>
                         </form>
                     </div>
