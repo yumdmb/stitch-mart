@@ -8,8 +8,8 @@ function FinancialRecords() {
   const [payments, setPayments] = useState([]);
   const [expenseInput, setExpenseInput] = useState('');
   const [expenses, setExpenses] = useState([]);
-  const [income, setIncome] = useState(0); 
-  const [totalRevenue, setTotalRevenue] = useState(0);
+  const [revenue, setRevenue] = useState(0); 
+  const [totalIncome, setTotalIncome] = useState(0);
 
   // useEffect to fetch payment data from the database
   useEffect(() => {
@@ -28,8 +28,8 @@ function FinancialRecords() {
 
   // Function to calculate total income from payment data
   useEffect(() => {
-    const totalIncome = payments.reduce((total, payment) => total + payment.amount, 0);
-    setIncome(totalIncome);
+    const totalRevenue = payments.reduce((total, payment) => total + payment.amount, 0);
+    setRevenue(totalRevenue);
   }, [payments]); // Re-calculate total income whenever payments change
 
   // Function to handle expense input change
@@ -53,9 +53,9 @@ function FinancialRecords() {
 
   // Update total revenue whenever income or expenses change
   useEffect(() => {
-    const totalRevenue = income - totalExpenses;
-    setTotalRevenue(totalRevenue);
-  }, [income, totalExpenses]);
+    const totalIncome = revenue - totalExpenses;
+    setTotalIncome(totalIncome);
+  }, [revenue, totalExpenses]);
 
   // Get current date in dd/mm/yyyy format
   const currentDate = new Date().toLocaleDateString('en-GB', {
@@ -72,9 +72,9 @@ function FinancialRecords() {
 
     page.drawText(`Financial Records: ${currentDate}`, {x: 50, y: height - 50, size: 20});
 
-    page.drawText(`Income: $${income}`, {x: 50, y: height - 100, size: 15});
+    page.drawText(`Revenue: $${revenue}`, {x: 50, y: height - 100, size: 15});
     page.drawText(`Total Expenses: $${totalExpenses}`, {x: 50, y: height - 120, size: 15});
-    page.drawText(`Total Revenue: $${totalRevenue}`, {x: 50, y: height - 140, size: 15});
+    page.drawText(`Total Income: $${totalIncome}`, {x: 50, y: height - 140, size: 15});
 
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
@@ -88,7 +88,7 @@ function FinancialRecords() {
       </div>
       <div className="financial-records p">
         <p>
-          Income: ${income}
+          Revenue: ${revenue}
         </p>
         <label htmlFor="expenses">Enter Expenses:</label>
         <p>
@@ -103,7 +103,7 @@ function FinancialRecords() {
         </p>
         <div>
           <p>Total Expenses: ${totalExpenses}</p>
-          <p>Total Revenue: ${totalRevenue}</p>
+          <p>Total Income: ${totalIncome}</p>
           <button className='invoice-button' onClick={generatePDF}>Generate PDF</button>
         </div>
       </div>
