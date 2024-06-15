@@ -1,5 +1,11 @@
+ body {
+    background-color: #f5a201;
+}
+
 .noti-container{
     background-color: #f5a201;
+    height: 100%;
+    padding-bottom: 20px;
 }
 
 .notification-header{
@@ -49,13 +55,14 @@
     margin-top: 13px;
     margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: 10px;
     padding-top: 1px;
     padding-left: 10px;
+    padding-bottom: 10px;
     padding-right: 10px; 
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
     width: 98%;
-    height: 100vh;
+    height: 100%;
 }
 
 .label-in-box{

@@ -105,8 +105,10 @@ export const checkout = async (req, res, next) => {
             return res.status(400).json({ message: `Insufficient stock for item ${cartItem.item}` });
         }
 
-        inventoryItem.quantity -= cartItem.quantity;
-        await inventoryItem.save();
+        await Inventory.updateOne(
+            { _id: inventoryItem._id },
+            { $inc: { quantity: -cartItem.quantity } }
+          );
 
         if (inventoryItem.quantity<5) {
             const notiLowInv = new Notification({ email: 'mnurhakimothman@gmail.com', //since seller
