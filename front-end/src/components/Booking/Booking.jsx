@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './BookingApp.css';
 
 function Booking() {
@@ -12,8 +11,6 @@ function Booking() {
         quantity: '',
         designFile: null
     });
-
-    let nav = useNavigate();
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -53,7 +50,6 @@ function Booking() {
             } else {
                 alert(`Error: ${result.message}`);
             }
-            nav('/time-available');
         } catch (error) {
             alert('Error submitting booking');
         }

@@ -193,10 +193,32 @@ button[type="submit"]:hover {
   max-width: 50%;
 }
 
-.button-container-center {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+/* Invoice Recap */
+.invoice-recap table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-recap th, .invoice-recap td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.invoice-recap th {
+  background-color: #f2f2f2;
+}
+
+.invoice-recap tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.invoice-recap table td {
+  background-color: #ffffff;
 }
 
 .button {

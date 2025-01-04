@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FinancialRecords from './FinancialRecords';
 import OrderManagement from './OrderManagement';
+import FinancialReports from './FinancialReports';
 
 //Main App for Finance Module
 function FinancialApp() {
@@ -24,8 +25,9 @@ function FinancialApp() {
       </div>
         <FinancialRecords />
         <OrderManagement />
+        <FinancialReports />
         <div class="footer">
-        <p></p>
+        <p>Footer</p>
       </div>
       </div>
     </div>

@@ -1,48 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { PDFDocument, rgb } from 'pdf-lib';
-import { saveAs } from 'file-saver';
 
-function OrderViewer({ orders, clients }) {
+function OrderViewer({ orders, clients, invoiceClient }) {
   const [notification, setNotification] = useState(null);
 
   // Function to get client details based on clientId
   const getClientDetails = (clientId) => {
+    // Find the client with the matching clientId
     const client = clients.find(client => client._id === clientId);
+    // If client found, return name and email, otherwise return 'Unknown Client'
     return client ? `${client.name} (${client.email})` : 'Unknown Client';
   };
 
   // Function to handle invoice click event
   const handleInvoiceClick = async (order) => {
-    const client = clients.find(client => client._id === order.clientId);
-    if (client) {
-      try {
-        // Create a new PDFDocument
-        const pdfDoc = await PDFDocument.create();
-        const page = pdfDoc.addPage([600, 400]);
-        const { width, height } = page.getSize();
-
-        // Add content to the PDF
-        page.drawText('Invoice', { x: 50, y: height - 50, size: 20 });
-        page.drawText(`Client Name: ${client.name}`, { x: 50, y: height - 110, size: 15 });
-        page.drawText(`Client Email: ${client.email}`, { x: 50, y: height - 140, size: 15 });
-        page.drawText(`Product: ${order.productName}`, { x: 50, y: height - 170, size: 15 });
-        page.drawText(`Quantity: ${order.quantity}`, { x: 50, y: height - 200, size: 15 });
-        page.drawText(`Total Price: $${order.totalPrice}`, { x: 50, y: height - 230, size: 15 });
-
-        // Serialize the PDFDocument to bytes
-        const pdfBytes = await pdfDoc.save();
-
-        // Create a blob from the PDF bytes and save it
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-        saveAs(blob, `invoice ${client.name}.pdf`);
-
-        setNotification({ type: 'success', message: 'Invoice generated successfully' });
-      } catch (error) {
-        console.error('Error generating invoice:', error);
-        setNotification({ type: 'error', message: 'Failed to generate invoice' });
+    try {
+      // Find the client corresponding to the order
+      const client = clients.find(client => client._id === order.clientId);
+      if (client) {
+        // If client found, send invoice request to the backend
+        const response = await fetch('/api/invoice', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            clientId: client._id, // Send client ID to the backend
+            email: client.email,
+            // Include any other necessary invoice details here
+          }),
+        });
+        // Check if invoice request was successful
+        if (response.ok) {
+          console.log("Invoice sent successfully");
+          // Display success notification
+          setNotification({ type: 'success', message: `Invoice sent to ${client.email}` });
+        } else {
+          console.error("Failed to send invoice:", response.statusText);
+          // Display error notification
+          setNotification({ type: 'error', message: `Failed to send invoice to ${client.email}` });
+        }
+      } else {
+        // If client not found, display error notification
+        console.error("Client not found");
+        setNotification({ type: 'error', message: 'Client not found' });
       }
-    } else {
-      setNotification({ type: 'error', message: 'Client not found' });
+    } catch (error) {
+      console.error("Error sending invoice:", error);
+      // Display error notification
+      setNotification({ type: 'error', message: 'Error sending invoice' });
     }
   };
 
@@ -60,8 +65,9 @@ function OrderViewer({ orders, clients }) {
             <div>Product: {order.productName}</div>
             <div>Quantity: {order.quantity}</div>
             <div>Total Price: ${order.totalPrice}</div>
+            {/* Display client details */}
             <div>Client: {getClientDetails(order.clientId)}</div>
-            <button className='invoice-button' onClick={() => handleInvoiceClick(order)}>Invoice</button>
+            <button onClick={() => handleInvoiceClick(order)}>Invoice</button>
           </li>
         ))}
       </ul>

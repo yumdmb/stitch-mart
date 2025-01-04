@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {store, persistor } from './redux/store.js'
 import {Provider} from 'react-redux'
 import {PersistGate} from 'redux-persist/integration/react'
-import Kommunicate from "@kommunicate/kommunicate-chatbot-plugin";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,11 +17,6 @@ root.render(
     </PersistGate>
   </Provider>
 );
-
-Kommunicate.init("c13ad44e0617bba0debfd790afd851cd", {
-  automaticChatOpenOnNavigation: true,
-  popupWidget: true
-});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

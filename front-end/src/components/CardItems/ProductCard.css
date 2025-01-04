@@ -1,8 +1,5 @@
 .product-card {
     border: 1px solid #ddd;
-    height: fit-content;
-    display: grid ;
-    grid-template-rows:  repeat(auto-fit, minmax(100px, 1fr));
     border-radius: 4px;
     padding: 16px;
     text-align: center;
@@ -22,30 +19,14 @@
 }
 
 .product-info {
-    
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: 1/7;
+    padding: 10px;
 }
 
-.product-info h4{
-    height: fit-content;
-}
-
-.product-info button{
-    background-color: #0B1E33;
-    border-color: #0B1E33;
-    border-radius: 7px;
-    font-size: medium;
-    color: #fefefe;
-}
-
-.product-info img {
-    height: auto;
-    width: auto;
-    margin-bottom: 30px;
+.product-info h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
 }
 
 .product-info p {
-    text-align: center justify;
+    margin-bottom: 5px;
 }

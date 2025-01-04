@@ -6,74 +6,9 @@
 
 .product-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    max-width: 1500px;
+    max-width: 1200px;
     margin: 0 auto;
     padding-top: 60px; /* Add padding-top to push the cards below the header */
-}
-
-.divider {
-    border: none;
-    border-top: 5px solid #000000;
-    padding-left: 15px;
-    margin: 35px;
-}
-
-.cart {
-    margin: 40px;
-    text-align: center;
-}
-
-.messages{
-    transition: transform 0.3s ease;
-    background-color: antiquewhite;
-    display: flex;
-    font-size: small;
-    width: auto;
-    height: fit-content;
-    padding: 20px;
-    margin: 10px;
-    margin-left: 25px;
-    margin-right: 25px;
-    border-radius: 15px;
-}
-
-.messages h5 {
-    margin-right: 80px;
-}
-
-.messages h4 {
-    margin-right: auto;
-}
-
-.messages button {
-    border-radius: 18px;
-    margin-right: 15px;
-}
-
-.empty-cart {
-    text-align: center;
-    margin-top: 100px;
-}
-
-.cart-icon{
-    margin: 20px;
-}
-
-.total-price {
-    display: flex;
-    margin: 15px;
-}
-
-.total-price h2 {
-    margin-left: 20px;
-}
-
-.total-price button{
-    margin-left: auto;
-    margin-right: 20px;
-    border-radius: 10px;
-    background-color: #0B1E33;
-    border-color: #0B1E33;
 }

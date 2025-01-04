@@ -1,11 +1,5 @@
- body {
-    background-color: #f5a201;
-}
-
 .noti-container{
     background-color: #f5a201;
-    height: 100%;
-    padding-bottom: 20px;
 }
 
 .notification-header{
@@ -55,14 +49,13 @@
     margin-top: 13px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 10px;
     padding-top: 1px;
     padding-left: 10px;
-    padding-bottom: 10px;
     padding-right: 10px; 
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     width: 98%;
-    height: 100%;
+    height: 100vh;
 }
 
 .label-in-box{
@@ -77,7 +70,7 @@
     margin-top: auto;
 }
 
-.message{
+.messages{
     transition: transform 0.3s ease;
     font-size: small;
     width: auto;
@@ -102,7 +95,7 @@
     margin-bottom: 5px;
 }
 
-.message:hover {
+.messages:hover {
     transform: translateY(-5px);
     transform: translateX(-5px); /* Float the button 5 pixels upwards */
 }
