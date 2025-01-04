@@ -82,7 +82,7 @@
     margin: 50px auto 15px;
 }
 
-button[type="confirm"] {
+button[type="submit"] {
     background-color: #007bff; 
     border: none;
     color: white;
@@ -97,59 +97,6 @@ button[type="confirm"] {
     transition-duration: 0.4s;
 }
 
-button[type="confirm"]:hover {
-    background-color: #0056b3;
-}
-
-
-/* SUPPLIER*/
-.supplier-list {
-    text-align: left;
-    border-radius: 10px;
-    background-color: #ffd35b;
-    padding: 20px;
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    max-width: 90%;
-}
-
-.supplier-list-header {
-    text-align: center;
-    color: #fff;
-    background-color: #013c58;
-    padding: 5px;
-    border-radius: 5px;
-    max-width: 30%;
-    margin: 0px auto 15px;
-}
-
-.add-supplier-header {
-    text-align: center;
-    color: #fff;
-    background-color: #013c58;
-    padding: 5px;
-    border-radius: 5px;
-    max-width: 30%;
-    margin: 50px auto 15px;
-}
-
-button[type="addsupplier"] {
-    background-color: #007bff; 
-    width: 100%;
-    border: none;
-    color: white;
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 27px 0px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition-duration: 0.4s;
-}
-
-button[type="addsupplier"]:hover {
+button[type="submit"]:hover {
     background-color: #0056b3;
 }

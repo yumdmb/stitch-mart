@@ -86,10 +86,11 @@ export const notiOrder = async (req, res) => {
 
 export const notiAppointment = async (req, res) => {
     try{
-        const notiFetched = await Notification.find({email: req.params.email, category: "Appointment"});
+        const notiFetched = await Notification.find({email: req.params.email, category: "Appointment Booking Succeeded!"});
         return res.status(200).json(notiFetched);
     }
     catch (error) {
         console.log(error);
     }
 }
+

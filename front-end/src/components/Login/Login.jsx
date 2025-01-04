@@ -8,6 +8,8 @@ import {
   signInSuccess,
 } from "../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({ setUser }) => {
   const [formData, setFormData] = useState({});
@@ -35,9 +37,14 @@ const Login = ({ setUser }) => {
         dispatch(signInFailure(data));
         return;
       }
+      toast.success("Login successful!");
       dispatch(signInSuccess(data));
-      navigate("/");
+      // Delay navigation to the login page
+      setTimeout(() => {
+        navigate("/");
+      }, 3000); // 3 seconds delay
     } catch (error) {
+      toast.error("Login failed!");
       dispatch(signInFailure(error));
     }
   };
@@ -102,6 +109,7 @@ const Login = ({ setUser }) => {
             </Link>
           </div>
         </form>
+        <ToastContainer />
         <div>
           <p className="text-danger fw-bolder fs-7 mt-3">
             {error ? error.message || "Something went wrong!" : ""}

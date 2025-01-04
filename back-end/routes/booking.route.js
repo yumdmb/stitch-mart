@@ -1,5 +1,6 @@
 import express from 'express';
-import { createEmbroideryBooking, getAllEmbroideryBookings, updateBookingStatus, upload } from '../controllers/booking.controller.js';
+import { createEmbroideryBooking, getAllEmbroideryBookings, updateBookingStatus } from '../controllers/booking.controller.js';
+import upload from '../upload.js';
 
 const router = express.Router();
 
@@ -13,4 +14,5 @@ router.get('/', getAllEmbroideryBookings);
 router.patch('/status', updateBookingStatus);
 
 export default router;
+
 
