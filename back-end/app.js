@@ -18,7 +18,8 @@ import inventoryRoutes from './routes/inventory.route.js';
 import cartRoutes from './routes/cart.route.js';
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://adam:adam@cluster0.kvg7je5.mongodb.net/stitch-mart?retryWrites=true&w=majority&appName=Cluster0")
+// mongodb+srv://adam:adam@cluster0.7xod5.mongodb.net/stitch-mart?retryWrites=true&w=majority&appName=Cluster0
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://adam:adam@cluster0.7xod5.mongodb.net/stitch-mart?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     console.log('Connected to MongoDB');
   })

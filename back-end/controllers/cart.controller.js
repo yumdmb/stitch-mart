@@ -111,7 +111,7 @@ export const checkout = async (req, res, next) => {
           );
 
         if (inventoryItem.quantity<5) {
-            const notiLowInv = new Notification({ email: 'mnurhakimothman@gmail.com', //since seller
+            const notiLowInv = new Notification({ email: 'adamarbain2107@gmail.com', //since seller
                 isRead: false, 
                 category: 'Low Inventory Alert',
                 content: `${inventoryItem.item} is running low! Only ${inventoryItem.quantity} is left!.`});
@@ -126,7 +126,7 @@ export const checkout = async (req, res, next) => {
         content: `Your items : \n${cartDetails}, has been booked successfully.`
     });
 
-    const notiSeller = new Notification({ email: 'mnurhakimothman@gmail.com',
+    const notiSeller = new Notification({ email: 'adamarbain2107@gmail.com',
     isRead: false, 
     category: 'Order Update',
         content: `${cartDetails} is booked from ${email}.`});

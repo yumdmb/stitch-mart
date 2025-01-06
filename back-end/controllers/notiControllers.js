@@ -1,7 +1,7 @@
 import Notification from '../models/notiModel.js';
 
 export const notification = async (req, res, next) => {
-    const newNoti = new Notification({ email: 'mnurhakimothman@gmail.com',
+    const newNoti = new Notification({ email: 'adamarbain2107@gmail.com',
                                          isRead: false, 
                                          category: 'Order Update',
                                           content: 'Meow Meow' });

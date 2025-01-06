@@ -10,7 +10,7 @@ export const createAppointment = async (req, res) => {
             isRead: false, 
             category: 'Appointment Booking Succeeded!',
              content: `Your appointment on ${date}, ${time} has been booked successfully.` });
-        const notiSeller = new Notification({ email: 'mnurhakimothman@gmail.com',
+        const notiSeller = new Notification({ email: 'adamarbain2107@gmail.com',
         isRead: false, 
         category: 'Appointment Booking Succeeded!',
             content: `You has appointment with customer ${name} (${email}) on ${date}, ${time} has been booked successfully.` });
