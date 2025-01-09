@@ -1,5 +1,6 @@
 import { truncate } from "fs";
 import Inventory from "../models/inventory.model.js";
+import Notification from '../models/notiModel.js';
 
 export const fetchInventory = async (req, res, next) => {
     try{
@@ -22,15 +23,30 @@ export const fetchInventoryId = async (req, res, next) => {
 }
 
 export const updateInventory = async (req, res, next) => {
-    try{
-        const InventoryUpdated = await Inventory.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        return res.status(200).json(InventoryUpdated);
+  try {
+    const InventoryUpdated = await Inventory.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    console.log("InventoryUpdated: ", InventoryUpdated);
+    if (parseInt(InventoryUpdated.quantity) < 10) {
+      const lowStockNoti = new Notification({
+        email: "adamarbain2107@gmail.com",
+        isRead: false,
+        category: "Low Inventory Alert",
+        content: `${InventoryUpdated.item} is running low! Only ${InventoryUpdated.quantity} is left!.`,
+      });
+      await lowStockNoti.save();
     }
-    catch (error) {
-        next(error);
-    }
+
+    return res.status(200).json(InventoryUpdated);
+  } catch (error) {
+    next(error);
+  }
 };
-``
+
 export const deleteInventory = async (req, res, next) => {
     try{
         await Inventory.findByIdAndDelete(req.params.id);

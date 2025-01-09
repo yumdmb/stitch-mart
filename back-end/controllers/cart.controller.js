@@ -110,7 +110,7 @@ export const checkout = async (req, res, next) => {
             { $inc: { quantity: -cartItem.quantity } }
           );
 
-        if (inventoryItem.quantity<5) {
+        if (inventoryItem.quantity<10) {
             const notiLowInv = new Notification({ email: 'adamarbain2107@gmail.com', //since seller
                 isRead: false, 
                 category: 'Low Inventory Alert',
