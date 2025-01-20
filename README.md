@@ -1,6 +1,6 @@
-## Front React Directory : `cd front-end`
-## Backend JavaScript : `cd back-end`
-## Backend Java Spring Boot : `cd backend`
+### FrontEnd React Directory : `cd front-end`
+### Backend JavaScript Directory : `cd back-end`
+### Backend Java Spring Boot Directory : `cd backend`
 
 # Getting Started with Create React App
 
