@@ -1,32 +1,33 @@
 package com.example.backend.model;
 
-import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "carts") // Maps this class to the "users" collection in MongoDB
+@Document(collection = "cart")
 public class Cart {
 
     @Id
-    private Long id;
-
+    private String id;
     private String itemId;
     private String item;
     private int quantity;
     private double totalPrice;
 
-    private LocalDateTime createdAt;
+    public Cart() {}
 
-    protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
+    public Cart(String itemId, String item, int quantity, double totalPrice) {
+        this.itemId = itemId;
+        this.item = item;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
     }
 
     // Getters and Setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -60,13 +61,5 @@ public class Cart {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }

@@ -17,8 +17,8 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @GetMapping
-    public List<Inventory> fetchAllInventory() {
-        return inventoryService.fetchAllInventory();
+    public List<Inventory> fetchInventory() {
+        return inventoryService.fetchInventory();
     }
 
     @GetMapping("/{id}")

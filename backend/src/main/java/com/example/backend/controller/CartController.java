@@ -1,53 +1,48 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.Cart;
-import com.example.backend.service.CartService;
+import com.example.backend.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/cart")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CartController {
 
     @Autowired
-    private CartService cartService;
+    private InventoryService inventoryService;
 
-    @PostMapping("/{id}")
-    public ResponseEntity<Cart> addToCart(@PathVariable String id, @RequestParam String item, @RequestParam double price) {
-        Cart cart = cartService.addToCart(id, item, price);
-        return ResponseEntity.ok(cart);
-    }
-
-    @PutMapping("/editAdd/{id}")
-    public ResponseEntity<Cart> incrementQuantity(@PathVariable String id) {
-        Cart cart = cartService.incrementQuantity(id);
-        return ResponseEntity.ok(cart);
-    }
-
-    @PutMapping("/editMinus/{id}")
-    public ResponseEntity<Void> decrementQuantity(@PathVariable String id) {
-        cartService.decrementQuantity(id);
-        return ResponseEntity.ok().build();
+    @PostMapping("/{inventoryId}")
+    public Cart createCart(@PathVariable String inventoryId) {
+        return inventoryService.createCart(inventoryId);
     }
 
     @GetMapping("/show")
-    public ResponseEntity<List<Cart>> fetchCart() {
-        List<Cart> cart = cartService.fetchCart();
-        return ResponseEntity.ok(cart);
+    public List<Cart> fetchCart() {
+        return inventoryService.fetchCart();
+    }
+
+    @PutMapping("/editAdd/{cartId}")
+    public Cart editCartAdd(@PathVariable String cartId) {
+        return inventoryService.editCartAdd(cartId);
+    }
+
+    @PutMapping("/editMinus/{cartId}")
+    public Cart editCartMinus(@PathVariable String cartId) {
+        return inventoryService.editCartMinus(cartId);
     }
 
     @GetMapping("/totalPrice")
-    public ResponseEntity<Double> fetchTotalPrice() {
-        double totalPrice = cartService.fetchTotalPrice();
-        return ResponseEntity.ok(totalPrice);
+    public double fetchTotalPrice() {
+        return inventoryService.fetchTotalPrice();
     }
 
-    @PostMapping("/checkout")
-    public ResponseEntity<Void> checkout(@RequestParam String email) {
-        cartService.checkout(email);
-        return ResponseEntity.ok().build();
+    @PostMapping("/checkout/{email}")
+    public String checkout(@PathVariable String email) {
+        inventoryService.checkout(email);
+        return "Checkout completed successfully!";
     }
 }

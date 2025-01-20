@@ -1,31 +1,44 @@
 package com.example.backend.model;
 
-import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "bookings") // Maps this class to the "users" collection in MongoDB
-public class Booking {
-    @Id
-    private Long id;
+import java.util.Date;
 
+@Document(collection = "booking")
+public class Booking {
+
+    @Id
+    private String id;
     private String name;
     private String email;
     private String phone;
     private String embroideryType;
     private String size;
     private int quantity;
-    private String designPreferences; // Path to the uploaded design file
-    private String status = "Pending"; // Default status
+    private String designPreferences;
+    private String status = "Pending"; // Default to "Pending"
+    private Date createdAt = new Date();
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    public Booking() {}
+
+    public Booking(String name, String email, String phone, String embroideryType, String size, int quantity, String designPreferences, String status) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.embroideryType = embroideryType;
+        this.size = size;
+        this.quantity = quantity;
+        this.designPreferences = designPreferences;
+        this.status = status;
+    }
 
     // Getters and Setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -69,6 +82,7 @@ public class Booking {
         this.size = size;
     }
 
+
     public int getQuantity() {
         return quantity;
     }
@@ -93,11 +107,11 @@ public class Booking {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 }
