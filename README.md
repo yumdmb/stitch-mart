@@ -1,3 +1,7 @@
+## Front React Directory : `cd front-end`
+## Backend JavaScript : `cd back-end`
+## Backend Java Spring Boot : `cd backend`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
