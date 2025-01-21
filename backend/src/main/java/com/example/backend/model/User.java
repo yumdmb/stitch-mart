@@ -3,8 +3,16 @@ package com.example.backend.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import org.springframework.security.core.GrantedAuthority;
+
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+
+import java.util.ArrayList;
+
 @Document(collection = "users") // Maps this class to the "users" collection in MongoDB
-public class User {
+public class User implements UserDetails {
 
     @Id
     private String id; // Maps to the `_id` field in MongoDB
@@ -73,5 +81,30 @@ public class User {
 
     public void setIsAdmin(Boolean isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
